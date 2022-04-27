@@ -3,6 +3,8 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     @post = posts(:one)
+    @user = users(:mary)
+    sign_in @user
   end
 
   test "visiting the index" do
@@ -10,16 +12,23 @@ class PostsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Posts"
   end
 
-  test "should create post" do
+  test "should create post when signed in" do
     visit posts_url
     click_on "New post"
 
     fill_in "Content", with: @post.content
-    fill_in "User", with: @post.user_id
     click_on "Create Post"
 
     assert_text "Post was successfully created"
     click_on "Back"
+  end
+
+  test "should redirect when not signed in" do
+    sign_out @user
+    visit posts_url
+
+    click_on "New post"
+    assert_text 'Sign in'
   end
 
   test "should update Post" do
@@ -27,7 +36,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Edit this post", match: :first
 
     fill_in "Content", with: @post.content
-    fill_in "User", with: @post.user_id
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
