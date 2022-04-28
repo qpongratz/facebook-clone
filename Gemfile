@@ -65,6 +65,11 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Guard for automatic testing and reloading
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :test do
