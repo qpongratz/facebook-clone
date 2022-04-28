@@ -45,8 +45,6 @@ guard :minitest do
   #   "test/mailers/#{m[1]}_mailer_test.rb"
   # end
 end
-<<<<<<< HEAD
-=======
 
 guard 'livereload' do
   extensions = {
@@ -86,4 +84,3 @@ guard 'livereload' do
   watch(%r{app/helpers/.+\.rb})
   watch(%r{config/locales/.+\.yml})
 end
->>>>>>> LiveReload
