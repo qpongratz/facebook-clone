@@ -11,8 +11,9 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash.any? %>
+      <%= render 'flash' %>
+    <% end %>
     <%= link_to 'Sign in', new_user_session_path %>
     <%= button_to 'Sign out', destroy_user_session_path,  method: :delete%>
     <%= yield %>
