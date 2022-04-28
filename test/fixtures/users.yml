@@ -16,3 +16,13 @@ joe:
   last_name: jenkins
   email: joe@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+sammy:
+  first_name: sammy
+  last_name: jenkins
+  email: sammy@test.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+bill:
+  first_name: bill
+  last_name: jenkins
+  email: bill@test.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

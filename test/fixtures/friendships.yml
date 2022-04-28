@@ -3,7 +3,14 @@
 one:
   requester: mary
   friend: joe
+  status: :accepted
 
 two:
-  requester: joe
+  requester: mary
+  friend: bill
+  status: :pending
+
+three:
+  requester: sammy
   friend: mary
+  status: :accepted

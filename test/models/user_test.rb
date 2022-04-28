@@ -1,7 +1,10 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:mary)
+  end
+  test '#active_friends' do
+    assert_equal 2, @user.active_friends.count
+  end
 end
