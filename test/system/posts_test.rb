@@ -28,7 +28,7 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
 
     click_on "New post"
-    assert_text 'Sign in'
+    assert_selector 'h2', text: 'Log in'
   end
 
   test "should update Post" do
