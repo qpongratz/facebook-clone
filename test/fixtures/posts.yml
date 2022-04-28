@@ -7,3 +7,13 @@ one:
 two:
   content: MyText
   user: mary
+
+older:
+  content: Old
+  created_at: <%= Date.current - 1.week %>
+  user: mary
+
+newer:
+  content: New
+  created_at: <%= Date.current + 1.week %>
+  user: mary
