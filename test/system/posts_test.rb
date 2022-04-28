@@ -20,7 +20,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Create Post"
 
     assert_text "Post was successfully created"
-    click_on "Back"
+    assert_selector 'h1', text: 'Posts'
   end
 
   test "should update Post" do
@@ -31,7 +31,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
-    click_on "Back"
+    assert_selector 'h1', text: 'Posts'
   end
 
   test "should destroy Post" do
