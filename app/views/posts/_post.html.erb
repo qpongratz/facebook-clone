@@ -10,4 +10,13 @@
     <%= post.user.last_name %>
   </p>
 
+  <% if current_user == post.user %>
+    <div>
+      <%= link_to "Edit this post", edit_post_path(post) %>
+
+      <%= button_to "Destroy this post", post, method: :delete %>
+    </div>
+  <% end %>
+
+
 </div>
