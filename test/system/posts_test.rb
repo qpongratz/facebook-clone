@@ -23,14 +23,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "should redirect when not signed in" do
-    sign_out @user
-    visit posts_url
-
-    click_on "New post"
-    assert_selector 'h2', text: 'Log in'
-  end
-
   test "should update Post" do
     visit post_url(@post)
     click_on "Edit this post", match: :first

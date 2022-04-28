@@ -69,6 +69,7 @@ group :development do
   # Guard for automatic testing and reloading
   gem 'guard'
   gem 'guard-minitest'
+  gem 'guard-livereload'
 end
 
 group :test do
