@@ -70,6 +70,9 @@ group :development do
   gem 'guard'
   gem 'guard-minitest'
   gem 'guard-livereload'
+
+  # Bullet for finding inefficient queries
+  gem 'bullet'
 end
 
 group :test do
