@@ -8,25 +8,21 @@ class User < ApplicationRecord
   has_many :incoming_friendships, class_name: 'Friendship', foreign_key: :friend_id, dependent: :destroy
   has_many :friends, through: :outgoing_friendships
   has_many :requesters, through: :incoming_friendships
-
-  # inside of my outgoing friendships find all where status is accepted
-  # Give me the friend_id of those
-  # inside of my incoming friendships find all where status is accepted
-  # Give me the requester_id of those
+  has_many :accepted_friends
 
   def active_friends
-    outgoing_friendships.accepted + incoming_friendships.accepted
+    friends.merge(outgoing_friendships.accepted) + requesters.merge(incoming_friendships.accepted)
   end
 
-  # def active_friends
-  #   friends.select { |friend| friend.friends.include?(self) }
-  # end
+  def pending_friends
+    pending_incoming + pending_outgoing
+  end
 
-  # def pending_incoming
-  #   requesters.reject { |requester| friends.include?(requester) }
-  # end
+  def pending_incoming
+    requesters.merge(incoming_friendships.pending)
+  end
 
-  # def pending_outgoing
-  #   friends.reject { |friend| friend.friends.include?(self) }
-  # end
+  def pending_outgoing
+    friends.merge(outgoing_friendships.pending)
+  end
 end
