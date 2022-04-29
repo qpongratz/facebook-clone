@@ -5,9 +5,9 @@
   <p>You have already sent them a friend request</p>
 <% elsif current_user.pending_incoming.include?(user) %>
   <p>Accept Friend?</p>
-  <%= render 'friendships/new', friendship: Friendship.new, friend_id: user.id %>
+  <%# <%= render 'friendships/edit', friendship: Friendship.new, friend_id: user.id %> %>
 <% else %>
   <p>Send a friend request</p>
-  <%= render 'friendships/new', friendship: Friendship.new, friend_id: user.id %>
+  <%= render 'users/friendships/new', friendship: Friendship.new, user: user %>
 <% end %>
 <br>
