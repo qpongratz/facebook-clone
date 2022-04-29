@@ -26,3 +26,8 @@ bill:
   last_name: jenkins
   email: bill@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+friendless:
+  first_name: friendless
+  last_name: jenkins
+  email: friendless@test.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
