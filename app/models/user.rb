@@ -26,6 +26,10 @@ class User < ApplicationRecord
     friends.merge(outgoing_friendships.pending)
   end
 
+  def find_friendship(user)
+    incoming_friendships.find_by(requester_id: user.id) || outgoing_friendships.find_by(friend_id: user.id)
+  end
+
   def friend_status(user)
     return 'active' if active_friends.include?(user)
     return 'outgoing' if pending_outgoing.include?(user)
