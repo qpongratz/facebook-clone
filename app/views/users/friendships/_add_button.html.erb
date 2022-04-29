@@ -1,0 +1,12 @@
+<% case current_user.friend_status(user) %>
+<% when 'active' %>
+  <p>This is your friend!</p>
+<% when 'outgoing' %>
+  <p>You have already sent them a friend request</p>
+<% when 'incoming' %>
+  <p>Accept Friend?</p>
+  <%# <%= render 'friendships/edit', friendship: Friendship.new, friend_id: user.id %> %>
+<% when 'none' %>
+  <p>Send a friend request</p>
+  <%= render 'users/friendships/new', friendship: Friendship.new, user: user %>
+<% end %>
