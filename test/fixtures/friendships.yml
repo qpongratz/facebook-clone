@@ -1,16 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+mary_joe_accepted:
   requester: mary
   friend: joe
   status: :accepted
 
-two:
+mary_bill_pending:
   requester: mary
   friend: bill
   status: :pending
 
-three:
+sammy_mary_accepted:
   requester: sammy
   friend: mary
   status: :accepted
