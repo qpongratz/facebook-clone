@@ -33,6 +33,9 @@ gem "redis", "~> 4.0"
 # For CSS Bundling
 gem 'cssbundling-rails'
 
+# For pagination of users
+gem 'pagy'
+
 # For faking test data
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 
