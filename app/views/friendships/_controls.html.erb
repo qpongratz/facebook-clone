@@ -1,0 +1,11 @@
+<% if friendship.accepted? %>
+  <p>This is your friend!</p>
+  <%= button_to 'Unfriend', friendship, method: :delete %>
+<% elsif friendship.requester == current_user %>
+  <p>You have already sent <%= friendship.friend.name %> a friend request</p>
+  <%= button_to 'Unsend request?', friendship, method: :delete %>
+<% else %>
+  <p><%= friendship.requester.name %> has requested to be your friend.</p>
+  <%= link_to 'Accept Request', edit_friendship_path %>
+  <%= button_to 'Reject Request', friendship, method: :delete %>
+<% end %>

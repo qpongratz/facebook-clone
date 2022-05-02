@@ -1,10 +1,8 @@
 class FriendshipsController < ApplicationController
   before_action :set_user, only: %i[index new create]
-  before_action :set_friendship, except: %i[new create index]
+  before_action :set_friendship, only: %i[show edit update destroy]
 
-  def show
-
-  end
+  def show; end
 
   def index
 

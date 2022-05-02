@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   scope :all_except, -> (user) { where.not(id: user) }
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def active_friends
     friends.merge(outgoing_friendships.accepted) + requesters.merge(incoming_friendships.accepted)
   end

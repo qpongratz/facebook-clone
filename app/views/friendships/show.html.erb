@@ -1,0 +1,10 @@
+<% if @friendship.accepted? %>
+  <h1>Friendship between <%= @friendship.requester.name %> and <%= @friendship.friend.name %> </h1>
+  <h2>Friends since: <%= @friendship.updated_at %></h2>
+<% end %>
+
+<% if @friendship.member?(current_user) %>
+  <%= render 'controls', friendship: @friendship%>
+<% end %>
+
+
