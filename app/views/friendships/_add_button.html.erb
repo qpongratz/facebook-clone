@@ -5,7 +5,7 @@
   <p>You have already sent them a friend request</p>
 <% when 'incoming' %>
   <p>Accept Friend?</p>
-  <%# <%= link_to 'Accept Friend', [:edit,user, user.find_friendship(current_user)] %> %>
+  <%= link_to 'Accept Friend', [:edit, user, user.find_friendship(current_user)] %>
 <% when 'none' %>
   <p>Send a friend request</p>
   <%= link_to 'Send a Friend Request', new_user_friendship_path(user) %>

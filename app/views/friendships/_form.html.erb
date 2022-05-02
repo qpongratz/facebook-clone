@@ -1,5 +1,16 @@
-<%= form_with model: [user, friendship] do |f| %>
-  <%= f.hidden_field :friend_id, value: user.id %>
-  <%= f.hidden_field :status, value: status %>
+  <% if friendship.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(friendship.errors.count, "error") %> prohibited this friendship from being saved:</h2>
+
+      <ul>
+        <% friendship.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<%= form_with model: [user, friendship], url: [user, friendship] do |f| %>
   <%= f.submit %>
 <% end %>

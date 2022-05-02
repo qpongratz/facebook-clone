@@ -14,7 +14,7 @@ class FriendshipsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get create" do
     assert_difference('Friendship.count') do
-      post user_friendships_url(@friend_user), params: { friendship: { friend_id: @friend_user.id } }
+      post user_friendships_url(@friend_user)
     end
   end
 
