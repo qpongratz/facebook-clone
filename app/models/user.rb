@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :requesters, through: :incoming_friendships
   has_many :accepted_friends
 
+  scope :all_except, -> (user) { where.not(id: user) }
+
   def active_friends
     friends.merge(outgoing_friendships.accepted) + requesters.merge(incoming_friendships.accepted)
   end
