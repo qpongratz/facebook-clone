@@ -1,12 +1,12 @@
-<% case current_user.friend_status(user) %>
-<% when 'active' %>
-  <p>This is your friend!</p>
-<% when 'outgoing' %>
-  <p>You have already sent them a friend request</p>
-<% when 'incoming' %>
-  <p>Accept Friend?</p>
-  <%= link_to 'Accept Friend', [:edit, user.find_friendship(current_user)] %>
-<% when 'none' %>
+<% friendship = user.find_friendship(current_user) %>
+<% if friendship.nil? %>
   <p>Send a friend request</p>
   <%= link_to 'Send a Friend Request', new_user_friendship_path(user) %>
+<% elsif friendship.accepted? %>
+  <p>This is your friend!</p>
+<% elsif friendship.requester == current_user %>
+  <p>You have already sent them a friend request</p>
+<% else %>
+  <p>Accept Friend?</p>
+  <%= link_to 'Accept Friend', [:edit, user.find_friendship(current_user)] %>
 <% end %>
