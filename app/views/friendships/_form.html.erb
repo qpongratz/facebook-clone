@@ -1,3 +1,5 @@
-<%= form_with model: friendship, url: [user, friendship] do |f| %>
+<%= form_with model: [user, friendship] do |f| %>
+  <%= f.hidden_field :friend_id, value: user.id %>
+  <%= f.hidden_field :status, value: status %>
   <%= f.submit %>
 <% end %>
