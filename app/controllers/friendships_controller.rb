@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :set_user, only: %i[index create]
+  before_action :set_user
   before_action :set_friendship, only: %i[update destroy]
 
   def index
@@ -22,7 +22,10 @@ class FriendshipsController < ApplicationController
 
   def update
     if @friendship.update(status: :accepted)
-      redirect_back_or_to root_path, notice: 'Friend request accepted'
+      respond_to do |format|
+        format.html { redirect_back_or_to root_path, notice: 'Friend request accepted' }
+        format.turbo_stream
+      end
     else
       flash.now[:alert] = 'Something went wrong'
       render :edit, status: :unprocessable_entity
@@ -31,7 +34,10 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @friendship.destroy
-    redirect_back_or_to root_path, notice: 'Successfully unfriended'
+    respond_to do |format|
+      format.html { redirect_back_or_to root_path, notice: 'Successfully unfriended' }
+      format.turbo_stream
+    end
   end
 
   private

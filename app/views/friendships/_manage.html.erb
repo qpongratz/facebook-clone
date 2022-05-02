@@ -1,14 +1,14 @@
 <% if friendship.nil? %>
   <%= button_to 'Send a Friend Request', [user, Friendship.new], method: :post %>
 <% elsif friendship.accepted? %>
-  <%= button_to 'Unfriend', friendship, method: :delete %>
+  <%= button_to 'Unfriend', [user, friendship], method: :delete %>
 <% elsif friendship.requester == current_user %>
   <p>You have already sent <%= friendship.friend.name %> a friend request</p>
-  <%= button_to 'Unsend request?', friendship, method: :delete %>
+  <%= button_to 'Unsend request?', [user, friendship], method: :delete %>
 <% else %>
   <p><%= friendship.requester.name %> has requested to be your friend.</p>
-  <%= button_to 'Accept Request', friendship, action: :update %>
-  <%= button_to 'Reject Request', friendship, method: :delete %>
+  <%= button_to 'Accept Request', [user, friendship], action: :update %>
+  <%= button_to 'Reject Request', [user, friendship], method: :delete %>
 <% end %>
 
 
