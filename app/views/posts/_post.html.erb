@@ -11,7 +11,7 @@
       <%= post.user.last_name %>
     </p>
 
-    <%= link_to "Show this post", post %>
+    <%= link_to "Show this post", post, data: { turbo_frame: '_top'} %>
 
     <% if current_user == post.user %>
       <div>
