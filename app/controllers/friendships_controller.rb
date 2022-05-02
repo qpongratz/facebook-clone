@@ -1,15 +1,9 @@
 class FriendshipsController < ApplicationController
-  before_action :set_user, only: %i[index new create]
-  before_action :set_friendship, only: %i[show edit update destroy]
-
-  def show; end
+  before_action :set_user, only: %i[index create]
+  before_action :set_friendship, only: %i[update destroy]
 
   def index
 
-  end
-
-  def new
-    @friendship = Friendship.new
   end
 
   def create
@@ -22,8 +16,6 @@ class FriendshipsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-  def edit; end
 
   def update
     if @friendship.update(status: :accepted)
