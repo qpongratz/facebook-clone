@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = current_user.outgoing_friendships.build(friend_id: params[:user_id])
+    @friendship = current_user.outgoing_friendships.build(friendship_params)
 
     if @friendship.save
       redirect_back_or_to root_path, notice: 'Friend request sent'
@@ -28,6 +28,9 @@ class FriendshipsController < ApplicationController
   private
 
   def friendship_params
-    params.require(:friendship).permit(:friend_id, :status)
+    params
+      .require(:friendship)
+      .permit(:friend_id)
+      .with_defaults(status: 0)
   end
 end

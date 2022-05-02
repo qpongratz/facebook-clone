@@ -7,14 +7,15 @@ class FriendshipsControllerTest < ActionDispatch::IntegrationTest
     @friend_user = users(:friendless)
   end
 
+  test "should get new" do
+    get new_user_friendship_url(@friend_user)
+    assert_response :success
+  end
+
   test "should get create" do
     assert_difference('Friendship.count') do
-      post "/users/#{@friend_user.id}/friendships"
+      post user_friendships_url(@friend_user), params: { friendship: { friend_id: @friend_user.id } }
     end
   end
 
-  # test "should get destroy" do
-  #   get friendships_destroy_url
-  #   assert_response :success
-  # end
 end
