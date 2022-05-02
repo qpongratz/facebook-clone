@@ -10,7 +10,10 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.outgoing_friendships.build(friend_id: @user.id)
 
     if @friendship.save
-      redirect_back_or_to root_path, notice: 'Friend request sent'
+      respond_to do |format|
+        format.html { redirect_back_or_to root_path, notice: 'Friend request sent' }
+        format.turbo_stream
+      end
     else
       flash.now[:alert] = 'Something went wrong'
       render :new, status: :unprocessable_entity

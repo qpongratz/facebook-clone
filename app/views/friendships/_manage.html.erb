@@ -1,4 +1,3 @@
-<% friendship = user.find_friendship(current_user) %>
 <% if friendship.nil? %>
   <%= button_to 'Send a Friend Request', [user, Friendship.new], method: :post %>
 <% elsif friendship.accepted? %>
