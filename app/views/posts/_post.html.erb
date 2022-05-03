@@ -20,5 +20,8 @@
         <%= button_to "Destroy this post", post, method: :delete %>
       </div>
     <% end %>
+
+    <%= render post.comments %>
+    <%= render 'comments/form', comment: post.comments.build %>
   </div>
 <% end %>

@@ -1,12 +1,10 @@
 <div id="<%= dom_id comment %>">
   <p>
-    <strong>Content:</strong>
-    <%= comment.content %>
+    <strong><%= comment.user.name %>:</strong>
   </p>
 
   <p>
-    <strong>Comentable:</strong>
-    <%= comment.comentable_id %>
+    <%= comment.content %>
   </p>
 
 </div>
