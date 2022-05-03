@@ -1,5 +1,5 @@
 <%= link_to "#{user.first_name} #{user.last_name}", user %>
-<% friendship = user.find_friendship(current_user)%>
+<% friendship ||= Friendship.between(user, current_user) %>
 <%= turbo_frame_tag user do %>
   <%= render 'friendships/manage', friendship: friendship, user: user %>
 <% end %>
