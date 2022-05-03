@@ -14,30 +14,32 @@ class PostsTest < ApplicationSystemTestCase
 
   test "should create post when signed in" do
     visit posts_url
-    click_on "New post"
+     click_on "New post"
 
-    fill_in "Content", with: @post.content
+    fill_in "Content", with: 'Hello'
     click_on "Create Post"
 
-    assert_text "Post was successfully created"
+    assert_text 'Hello'
     assert_selector 'h1', text: 'Posts'
   end
 
   test "should update Post" do
-    visit post_url(@post)
+    visit posts_url
     click_on "Edit this post", match: :first
 
-    fill_in "Content", with: @post.content
+    fill_in "Content", with: 'Goodbye'
     click_on "Update Post"
 
-    assert_text "Post was successfully updated"
+    assert_text 'Goodbye'
     assert_selector 'h1', text: 'Posts'
   end
 
   test "should destroy Post" do
-    visit post_url(@post)
-    click_on "Destroy this post", match: :first
+    visit posts_path
+    within "div#post_#{@post.id}" do
+      click_on "Destroy this post", match: :first
+    end
 
-    assert_text "Post was successfully destroyed"
+    assert_no_selector "div#post_#{@post.id}"
   end
 end
