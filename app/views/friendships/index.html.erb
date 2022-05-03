@@ -1,0 +1,12 @@
+<% if @user == current_user %>
+  <h2>Incoming Requests</h2>
+  <%= render @pending_incoming %>
+  <h2>Outgoing Requests</h2>
+  <%= render @pending_outgoing %>
+  <h2>Your Friends</h2>
+<% else %>
+  <h2><%= @user.name %>'s Friends</h2>
+<% end %>
+
+
+<%= render @active_friends %>

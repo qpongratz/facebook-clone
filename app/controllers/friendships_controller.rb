@@ -3,7 +3,9 @@ class FriendshipsController < ApplicationController
   before_action :set_friendship, only: %i[update destroy]
 
   def index
-
+    @pending_incoming = @user.pending_incoming
+    @pending_outgoing = @user.pending_outgoing
+    @active_friends = @user.active_friends
   end
 
   def create
