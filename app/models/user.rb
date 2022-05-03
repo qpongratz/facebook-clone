@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :requesters, through: :incoming_friendships
   has_many :accepted_friends
 
-  scope :all_except, -> (user) { where.not(id: user) }
+  scope :all_except, ->(user) { where.not(id: user) }
 
   def name
     "#{first_name} #{last_name}"
@@ -33,7 +33,11 @@ class User < ApplicationRecord
   end
 
   def find_friendship(user)
-    incoming_friendships.find_by(requester_id: user.id) || outgoing_friendships.find_by(friend_id: user.id)
+    if friends.include?(user)
+      outgoing_friendships.find_by(friend_id: user.id)
+    elsif requesters.include?(user)
+      incoming_friendships.find_by(requester_id: user.id)
+    end
   end
 
   def friend_status(user)
