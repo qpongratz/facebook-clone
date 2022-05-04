@@ -15,6 +15,8 @@
       <% end %>
     </p>
     <%= link_to 'Add a comment', new_comment_comment_path(comment), data: { turbo_frame: '_top' } %>
-
-    <ul><%= render comment.comments, commentable: comment %></ul>
+    <%= turbo_frame_tag nested_dom_id(comment, 'comments') do %>
+      <%= link_to 'Show replies', comment_comments_path(comment) %>
+    <% end %>
   </li>
+
