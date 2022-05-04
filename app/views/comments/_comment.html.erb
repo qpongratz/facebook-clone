@@ -14,7 +14,9 @@
         </div>
       <% end %>
     </p>
-    <%= link_to 'Add a reply', new_comment_comment_path(comment), data: { turbo_frame: '_top' } %>
+    <%= turbo_frame_tag nested_dom_id(comment, 'new_comment') do %>
+      <%= link_to 'Add a reply', new_comment_comment_path(comment) %>
+    <% end %>
     <%= turbo_frame_tag nested_dom_id(comment, 'comments') do %>
       <%= link_to 'Show replies', comment_comments_path(comment) %>
     <% end %>
