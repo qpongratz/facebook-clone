@@ -2,10 +2,12 @@
 
 one:
   content: MyText
-  comentable: one
-  comentable_type: Comentable
+  commentable: one
+  commentable_type: post
+  user: mary
 
 two:
   content: MyText
-  comentable: two
-  comentable_type: Comentable
+  commentable: two
+  commentable_type: post
+  user: mary
