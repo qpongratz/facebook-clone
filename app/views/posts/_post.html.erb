@@ -24,7 +24,9 @@
       <%= link_to 'Show comments', post_comments_path(post) %>
     <% end %>
 
-    <%= link_to 'Add a comment', new_post_comment_path(post), data: { turbo_frame: '_top' } %>
+    <%= turbo_frame_tag nested_dom_id(post, 'new_comment') do %>
+      <%= link_to 'Add a comment', new_post_comment_path(post) %>
+    <% end %>
 
     <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
       <%#= render 'comments/form', comment: post.comments.build %>

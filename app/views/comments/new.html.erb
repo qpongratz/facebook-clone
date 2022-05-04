@@ -1,7 +1,7 @@
 <h1>New comment</h1>
-<%#= turbo_frame_tag nested_dom_id(@commentable, 'new_comment') do %>
+<%= turbo_frame_tag nested_dom_id(@commentable, 'new_comment') do %>
   <%= render "form", comment: @comment, commentable: @commentable %>
-<%# end %>
+<% end %>
 <br>
 <div>
   <%= link_to "Back to comments", comments_path %>
