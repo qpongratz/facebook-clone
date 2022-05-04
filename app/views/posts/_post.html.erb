@@ -20,13 +20,15 @@
         <%= button_to "Destroy this post", post, method: :delete %>
       </div>
     <% end %>
-    <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-      <%= link_to 'Show comments', post_comments_path(post) %>
-    <% end %>
+    <ul>
+      <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
+        <%= link_to 'Show comments', post_comments_path(post) %>
+      <% end %>
+    </ul>
 
-    <%= turbo_frame_tag nested_dom_id(post, 'new_comment') do %>
-      <%= link_to 'Add a comment', new_post_comment_path(post) %>
-    <% end %>
+    <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
+
+    <%= link_to 'Add a comment', new_post_comment_path(post), data: { turbo_frame: nested_dom_id(post, "new_comment") } %>
 
     <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
       <%#= render 'comments/form', comment: post.comments.build %>
