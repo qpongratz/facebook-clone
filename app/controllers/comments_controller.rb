@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   # GET /comments or /comments.json
   def index
-    @comments = Comment.includes(:user, :comments).all
+    @comments = @commentable.comments.all
   end
 
   # GET /comments/1 or /comments/1.json
