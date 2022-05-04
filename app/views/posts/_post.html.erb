@@ -22,7 +22,7 @@
     <% end %>
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-        <%= link_to 'Show comments', post_comments_path(post) %>
+        <%= render post.comments, commentable: post %>
       <% end %>
     </ul>
 
