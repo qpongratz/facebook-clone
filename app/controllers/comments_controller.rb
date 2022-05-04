@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[show edit update destroy]
+  before_action :set_commentable
 
   # GET /comments or /comments.json
   def index
@@ -58,13 +59,18 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:content, :commentable_id, :commentable_type, :user_id)
-    end
+  def set_commentable
+    @commentable = params[:post_id] if params[:post_id]
+    @commentable = params[:comment_id] if params[:comment_id]
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:content, :commentable_id, :commentable_type, :user_id)
+  end
 end
