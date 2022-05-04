@@ -2,5 +2,7 @@
 
 <h1>Comments</h1>
 <%= turbo_frame_tag nested_dom_id(@commentable, 'comments') do %>
-  <%= render @comments, commentable: @commentable %>
+  <ul>
+    <%= render @comments, commentable: @commentable %>
+  </ul>
 <% end %>
