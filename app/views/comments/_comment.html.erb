@@ -1,14 +1,20 @@
-<li class='comment' id="<%= dom_id comment %>">
-  <p>
-    <strong><%= comment.user.name %>:</strong>
-  </p>
+<%= turbo_frame_tag nested_dom_id(commentable, comment) %>
+  <li class='comment' id="<%= dom_id comment %>">
+    <p>
+      <strong><%= comment.user.name %>:</strong>
+    </p>
 
-  <p>
-    <%= comment.content %>
-  </p>
-  <%# <strong>Reply to this:</strong> %>
-  <ul><%= render comment.comments %></ul>
-  <%#= turbo_frame_tag [comment, 'new_reply'] do %>
-    <%#= render 'comments/form', comment: comment.replies.build %>
-  <%# end %>
-</li>
+    <p>
+      <%= comment.content %>
+      <% if current_user == comment.user %>
+        <div>
+          <%= link_to "Edit this comment", [commentable, comment] %>
+
+          <%= button_to "Destroy this comment", [commentable, comment], method: :delete %>
+        </div>
+      <% end %>
+    </p>
+    <%= link_to 'Add a comment', new_comment_comment_path(comment), data: { turbo_frame: '_top' } %>
+
+    <ul><%= render comment.comments, commentable: comment %></ul>
+  </li>
