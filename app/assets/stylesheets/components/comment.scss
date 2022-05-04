@@ -1,0 +1,7 @@
+.comment {
+  border: grey dashed;
+
+  + .comment {
+    border-top: none;
+  }
+}

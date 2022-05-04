@@ -1,5 +1,5 @@
 <%= turbo_frame_tag post do %>
-  <div id="<%= dom_id post %>">
+  <div class='post' id="<%= dom_id post %>">
     <p>
       <strong>Content:</strong>
       <%= post.content %>
@@ -20,8 +20,13 @@
         <%= button_to "Destroy this post", post, method: :delete %>
       </div>
     <% end %>
+    <%= turbo_frame_tag [dom_id(post), 'comments'] do %>
+      <%= render post.comments %>
+    <% end %>
 
-    <%= render post.comments %>
-    <%= render 'comments/form', comment: post.comments.build %>
+    <%= link_to 'Add a comment', new_post_comment_path(post), data: { turbo_frame: '_top' } %>
+
+    <%= turbo_frame_tag [dom_id(post), 'new_comment'] %>
+      <%#= render 'comments/form', comment: post.comments.build %>
   </div>
 <% end %>
