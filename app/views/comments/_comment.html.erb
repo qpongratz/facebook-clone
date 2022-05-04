@@ -1,4 +1,4 @@
-<div class='comment' id="<%= dom_id comment %>">
+<li class='comment' id="<%= dom_id comment %>">
   <p>
     <strong><%= comment.user.name %>:</strong>
   </p>
@@ -7,8 +7,8 @@
     <%= comment.content %>
   </p>
   <%# <strong>Reply to this:</strong> %>
-  <%= render comment.comments %>
+  <ul><%= render comment.comments %></ul>
   <%#= turbo_frame_tag [comment, 'new_reply'] do %>
     <%#= render 'comments/form', comment: comment.replies.build %>
   <%# end %>
-</div>
+</li>
