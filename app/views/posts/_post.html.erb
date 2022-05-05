@@ -22,15 +22,15 @@
     <% end %>
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-        <%= render post.comments, commentable: post %>
+        <%= render post.comments %>
       <% end %>
     </ul>
 
     <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
 
-    <%= link_to 'Add a comment', new_post_comment_path(post), data: { turbo_frame: nested_dom_id(post, "new_comment") } %>
+    <%= link_to 'Add a comment',
+                new_post_comment_path(post),
+                data: { turbo_frame: nested_dom_id(post, 'new_comment') } %>
 
-    <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
-      <%#= render 'comments/form', comment: post.comments.build %>
   </div>
 <% end %>

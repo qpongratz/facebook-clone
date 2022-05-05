@@ -1,4 +1,4 @@
-<%= turbo_frame_tag nested_dom_id(commentable, comment) %>
+<%= turbo_frame_tag comment %>
   <li class='comment' id="<%= dom_id comment %>">
     <p>
       <strong><%= comment.user.name %>:</strong>
@@ -8,17 +8,21 @@
       <%= comment.content %>
       <% if current_user == comment.user %>
         <div>
-          <%= link_to "Edit this comment", [commentable, comment] %>
+          <%= link_to "Edit this comment", comment %>
 
-          <%= button_to "Destroy this comment", [commentable, comment], method: :delete %>
+          <%= button_to "Destroy this comment", comment, method: :delete %>
         </div>
       <% end %>
     </p>
-    <%= turbo_frame_tag nested_dom_id(comment, 'new_comment') do %>
-      <%= link_to 'Add a reply', new_comment_comment_path(comment) %>
+    <%= turbo_frame_tag nested_dom_id(comment.commentable, comment.id, 'new_comment') do %>
+      <%= link_to 'Add a reply', [:new, comment.commentable, :comment, parent_id: comment.id] %>
     <% end %>
-    <%= turbo_frame_tag nested_dom_id(comment, 'comments') do %>
-      <%= link_to 'Show replies', comment_comments_path(comment) %>
+    <%= turbo_frame_tag nested_dom_id(comment.commentable, comment.id, 'comments') do %>
+      <% if comment.child_comments.any? %>
+        <ul>
+          <%= render comment.child_comments %>
+        </ul>
+      <% end %>
     <% end %>
   </li>
 

@@ -17,7 +17,9 @@
   </div>
 
   <div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
+    <% if local_assigns[:parent_id] %>
+      <%= form.hidden_field :parent_id, value: parent_id %>
+    <% end %>
     <%= form.submit %>
   </div>
 <% end %>
