@@ -21,9 +21,11 @@ module ApplicationHelper
           while path.last != o.parent_id
             path.pop
             output << '</ul>'
+            # output << turbo_wrapper_end
           end
         else
           path << o.parent_id
+          # output << turbo_wrapper_start(o)
           output << '<ul>'
         end
       end
@@ -38,6 +40,14 @@ module ApplicationHelper
   end
 
   private
+
+  def turbo_wrapper_end
+    '</turbo-frame>'
+  end
+
+  def turbo_wrapper_start(object)
+    "<turbo-frame id='#{object.commentable_type}_#{object.commentable_id}_#{object.parent_id}_comments'>"
+  end
 
   def sort_list(objects, order)
     objects = objects.order(:lft) if objects.is_a? Class
