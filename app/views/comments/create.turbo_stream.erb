@@ -1,4 +1,4 @@
-<%= turbo_stream.append nested_dom_id(@commentable, 'comments') do %>
+<%= turbo_stream.append nested_dom_id(@commentable, @comment.parent_id, 'comments') do %>
   <%= render 'comments/comment', comment: @comment, commentable: @commentable %>
 <% end %>
-<%= turbo_stream.update nested_dom_id(@commentable, 'new_comment'), ''%>
+<%= turbo_stream.update nested_dom_id(@commentable, @comment.parent_id, 'new_comment'), ''%>
