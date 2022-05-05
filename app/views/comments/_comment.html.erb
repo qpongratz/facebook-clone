@@ -13,16 +13,10 @@
         </div>
       <% end %>
     </p>
-    <%= turbo_frame_tag nested_dom_id(commentable, comment.id, 'new_comment') do %>
-      <%= link_to 'Add a reply', [:new, commentable, :comment, parent_id: comment.id] %>
-    <% end %>
-    <%#= turbo_frame_tag nested_dom_id(commentable, comment.id, 'comments') do %>
-      <%# unless comment.leaf? %>
-        <%# <ul> %>
-          <%#= render comment.children, commentable: commentable %>
-        <%# </ul> %>
-      <%# end %>
-    <%# end %>
+    <%= turbo_frame_tag nested_dom_id(commentable, comment.id, 'new_comment') %>
+    <%= link_to 'Add a reply',
+                [:new, commentable, :comment, parent_id: comment.id],
+                data: { turbo_frame: nested_dom_id(commentable, comment.id, 'new_comment') } %>
   </li>
 <% end %>
 
