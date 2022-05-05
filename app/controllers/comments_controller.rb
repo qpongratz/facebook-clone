@@ -1,39 +1,14 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
-  before_action :set_commentable
-
-  # GET /comments or /comments.json
-  def index
-    @comments = @commentable.comments.all
-  end
+  before_action :set_parent_id, only: %i[new]
+  before_action :set_commentable, only: %i[new create index]
 
   # GET /comments/1 or /comments/1.json
   def show
   end
 
-  # GET /comments/new
-  def new
-    @comment = @commentable.comments.build
-  end
-
   # GET /comments/1/edit
   def edit
-  end
-
-  # POST /comments or /comments.json
-  def create
-    @comment = @commentable.comments.build(comment_params)
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @commentable, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
-        format.turbo_stream
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
@@ -42,7 +17,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
-        format.turbo_stream
+        #format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -57,7 +32,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
-      format.turbo_stream
+      #format.turbo_stream
     end
   end
 
@@ -68,13 +43,12 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def set_commentable
-    @commentable = Post.find(params[:post_id]) if params[:post_id]
-    @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
+  def set_parent_id
+    @parent_id = params[:parent_id]
   end
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.require(:comment).permit(:content, :user_id)
+    params.require(:comment).permit(:content, :parent_id)
   end
 end
