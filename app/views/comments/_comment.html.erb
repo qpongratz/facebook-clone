@@ -1,5 +1,5 @@
 <%= turbo_frame_tag comment do %>
-  <div class='comment' id="<%= dom_id comment %>">
+  <li class='comment' id="<%= dom_id comment %>">
       <strong><%= comment.user.name %>:</strong>
 
 
@@ -18,11 +18,11 @@
     <% end %>
     <%#= turbo_frame_tag nested_dom_id(commentable, comment.id, 'comments') do %>
       <%# unless comment.leaf? %>
-        <ul>
+        <%# <ul> %>
           <%#= render comment.children, commentable: commentable %>
-        </ul>
+        <%# </ul> %>
       <%# end %>
     <%# end %>
-  </div>
+  </li>
 <% end %>
 

@@ -17,7 +17,7 @@ module Posts
         if @comment.save
           format.html { redirect_to @commentable, notice: "Comment was successfully created." }
           format.json { render :show, status: :created, location: @comment }
-          #format.turbo_stream
+          format.turbo_stream
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
