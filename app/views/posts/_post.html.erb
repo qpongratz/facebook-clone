@@ -20,10 +20,18 @@
         <%= button_to "Destroy this post", post, method: :delete %>
       </div>
     <% end %>
-    <ul>
-      <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-        <%= render post.comments %>
+    <div class="comments">
+      <%= sorted_nested_li(post.comments, :id) do |comment| %>
+        <%= render comment, commentable: post %>
       <% end %>
+    </div>
+    <ul>
+      <%#= turbo_frame_tag nested_dom_id(post, 'comments') do %>
+        <%# post.comments.each do |comment| %>
+          <%# next unless comment.root? %>
+          <%#= render comment, commentable: post%>
+        <%# end %>
+      <%# end %>
     </ul>
 
     <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
