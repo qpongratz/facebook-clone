@@ -13,8 +13,8 @@
         </div>
       <% end %>
     </p>
-    <%= turbo_frame_tag nested_dom_id(commentable, comment.id, 'new_comment') %>
-    <%= link_to 'Add a reply',
+    <%#= turbo_frame_tag nested_dom_id(commentable, comment.id, 'new_comment') %>
+    <%#= link_to 'Add a reply',
                 [:new, commentable, :comment, parent_id: comment.id],
                 data: { turbo_frame: nested_dom_id(commentable, comment.id, 'new_comment') } %>
   </li>

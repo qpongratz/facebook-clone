@@ -22,10 +22,13 @@
     <% end %>
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-        <%= sorted_nested_li(post.comments, :id) do |comment| %>
-          <%= render comment, commentable: post %>
-          <%= turbo_frame_tag nested_dom_id(post, comment.id, 'comments') %>
-        <% end %>
+
+        <%= render post.comments %>
+
+        <%#= sorted_nested_li(post.comments, :id) do |comment| %>
+          <%#= render comment, commentable: post %>
+          <%#= turbo_frame_tag nested_dom_id(post, comment.id, 'comments') %>
+        <%# end %>
       <% end %>
     </ul>
 
