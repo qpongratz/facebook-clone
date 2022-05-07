@@ -1,15 +1,34 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :set_parent_id, only: %i[new]
-  before_action :set_commentable, only: %i[new create index]
+  before_action :set_commentable
+
+  def index
+    @comments = @commentable.comments.ordered
+  end
+
+  def new
+    @comment = @commentable.comments.build
+  end
+
+  def create
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @commentable, notice: "Comment was successfully created." }
+        format.json { render :show, status: :created, location: @comment }
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # GET /comments/1 or /comments/1.json
-  def show
-  end
+  def show; end
 
   # GET /comments/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
@@ -17,7 +36,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
-        #format.turbo_stream
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

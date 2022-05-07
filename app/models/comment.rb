@@ -5,6 +5,8 @@ class Comment < ApplicationRecord
 
   acts_as_nested_set
 
+  scope :ordered, -> { order(id: :asc) }
+
   def self.preload_tree(actual_depth = nil)
     # get max_depth
     max_depth = Category.unscoped.maximum(:depth)

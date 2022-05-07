@@ -1,10 +1,11 @@
 <h1>Editing comment</h1>
 
-<%= render "form", comment: @comment %>
-
+<%= turbo_frame_tag @comment do %>
+  <%= render "form", comment: @comment, commentable: @commentable%>
+<% end %>
 <br>
 
 <div>
   <%= link_to "Show this comment", @comment %> |
-  <%= link_to "Back to comments", comments_path %>
+  <%#= link_to "Back to comments", comments_path %>
 </div>

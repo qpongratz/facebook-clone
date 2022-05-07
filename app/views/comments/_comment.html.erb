@@ -7,7 +7,8 @@
       <%= comment.content %>
       <% if current_user == comment.user %>
         <div>
-          <%= link_to "Edit this comment", comment %>
+          <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
+          <%= link_to "Edit this comment", edit_comment_path(comment) %>
 
           <%= button_to "Destroy this comment", comment, method: :delete %>
         </div>
