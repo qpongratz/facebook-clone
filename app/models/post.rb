@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :comments, -> { ordered }, as: :commentable, dependent: :destroy
 
   validates :content, presence: true
 
