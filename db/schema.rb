@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_195012) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_07_164039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_195012) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "reactable_type", null: false
+    t.bigint "reactable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reactable_type", "reactable_id"], name: "index_reactions_on_reactable"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +76,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_195012) do
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "friendships", "users", column: "requester_id"
   add_foreign_key "posts", "users"
+  add_foreign_key "reactions", "users"
 end
