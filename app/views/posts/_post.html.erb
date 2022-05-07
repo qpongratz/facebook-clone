@@ -20,6 +20,11 @@
         <%= button_to "Destroy this post", post, method: :delete %>
       </div>
     <% end %>
+
+    <%= button_to 'Like this post', post_reactions_path(post) %>
+
+    <%= render post.reactions %>
+
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
 
