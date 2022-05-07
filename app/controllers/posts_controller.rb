@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.includes(:user, comments: :user)
                 .find(params[:id])
+    # Add check here for if user is authorized to actually see this post
   end
 
   # GET /posts/new
