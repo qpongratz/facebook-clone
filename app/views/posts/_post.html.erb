@@ -23,7 +23,7 @@
 
     <%= button_to 'Like this post', post_reactions_path(post) %>
 
-    <%= render post.reactions %>
+    <%= pluralize(post.reactions.size, 'like') %>
 
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>

@@ -3,14 +3,14 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user, comments: :user, reactions: :user)
+    @posts = Post.includes(:user, comments: :user)
                  .friends_posts(current_user)
                  .newest_first
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    @post = Post.includes(:user, comments: :user, reactions: :user)
+    @post = Post.includes(:user, comments: :user)
                 .find(params[:id])
     # Add check here for if user is authorized to actually see this post
   end
