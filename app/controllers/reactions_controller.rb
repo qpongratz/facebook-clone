@@ -20,6 +20,8 @@ class ReactionsController < ApplicationController
 
   def destroy
     @reaction.destroy
+
+    redirect_back_or_to root_path
   end
 
   private
