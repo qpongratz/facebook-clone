@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render 'comments/comment', comment: @comment %>
+<%= turbo_frame_tag @comment do %>
+  <%= render 'comments/comment', comment: @comment %>
+<% end %>
 
 <div>
   <%= link_to "Edit this comment",  edit_comment_path %> |

@@ -12,7 +12,10 @@ class ReactionsController < ApplicationController
     build_reaction
 
     if @reaction.save
-      redirect_back_or_to root_path, notice: 'You liked it'
+      respond_to do |format|
+        format.html { redirect_back_or_to root_path, notice: 'You liked it' }
+        format.turbo_stream
+      end
     else
       redirect_back_or_to root_path, notice: 'Something went wrong'
     end

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :set_parent_id, only: %i[new]
-  before_action :set_commentable
+  before_action :set_commentable, except: %i[show edit update destroy]
 
   def index
     @comments = @commentable.comments.ordered
