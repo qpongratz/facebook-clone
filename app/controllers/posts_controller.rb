@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user, comments: :user, reactions: :user)
+    @posts = Post.includes(:user, :reactions, comments: :user)
                  .friends_posts(current_user)
                  .newest_first
   end
