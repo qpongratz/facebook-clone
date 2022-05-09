@@ -22,9 +22,13 @@ class ReactionsController < ApplicationController
   end
 
   def destroy
+    @reactable = @reaction.reactable
     @reaction.destroy
 
-    redirect_back_or_to root_path, notice: 'Unliked!'
+    respond_to do |format|
+      format.html { redirect_back_or_to root_path, notice: 'Unliked!' }
+      format.turbo_stream
+    end
   end
 
   private
