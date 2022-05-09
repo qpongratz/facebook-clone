@@ -1,1 +1,5 @@
-<%= button_to 'Unlike this post', reaction, method: :delete %>
+<li>
+  <%= reaction.user.name %> liked this.
+  <!-- Eventually render as user so users can add friends from this page
+  <%#= render reaction.user %> like this.  -->
+</li>
