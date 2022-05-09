@@ -23,7 +23,8 @@
 
     <% if current_user.id.in?(post.reactions.pluck(:user_id)) %>
       <% post.reactions.each do |reaction| %>
-        <%= render reaction if reaction.user_id = current_user.id %>
+        <%= next unless reaction.user_id == current_user.id %>
+        <%= render reaction %>
       <% end %>
     <% else %>
       <%= button_to 'Like this post', post_reactions_path(post) %>
