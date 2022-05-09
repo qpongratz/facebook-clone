@@ -5,7 +5,7 @@ class ReactionsController < ApplicationController
   before_action :set_reaction, only: %i[destroy]
 
   def index
-    @reactable.reactions.all
+    @reactions = @reactable.reactions.includes(:user)
   end
 
   def create
