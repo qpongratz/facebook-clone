@@ -2,10 +2,10 @@
 
 one:
   user: mary
-  reactable: one
+  reactable: one (Post)
   reactable_type: post
 
 two:
   user: mary
-  reactable: two
+  reactable: one (Comment)
   reactable_type: comment
