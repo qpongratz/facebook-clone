@@ -9,10 +9,10 @@
         <div>
           <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
           <%= link_to "Edit this comment", edit_comment_path(comment) %>
-
           <%= button_to "Destroy this comment", comment, method: :delete %>
         </div>
       <% end %>
+      <%= render 'reactions/reaction_navigation', reactable: comment %>
     </p>
     <%#= turbo_frame_tag nested_dom_id(commentable, comment.id, 'new_comment') %>
     <%#= link_to 'Add a reply',

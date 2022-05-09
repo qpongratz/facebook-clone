@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :posts do
-    resources :comments, shallow: true, module: :posts do
-      resources :reactions, only: %i[index create], module: :comments
-    end
+    resources :comments, only: %i[index new create], module: :posts
     resources :reactions, only: %i[index create], module: :posts
+  end
+
+  resources :comments, only: %i[show edit update destroy] do
+    resources :reactions, only: %i[index create], module: :comments
   end
 
   resources :reactions, only: %i[destroy]

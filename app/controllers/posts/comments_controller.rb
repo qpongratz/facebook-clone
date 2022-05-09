@@ -12,7 +12,7 @@ module Posts
     end
 
     def set_commentable
-      @commentable = Post.find(params[:post_id]) if params[:post_id]
+      @commentable = Post.find(params[:post_id])
     end
   end
 end
