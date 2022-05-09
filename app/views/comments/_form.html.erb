@@ -20,7 +20,7 @@
     <% if local_assigns[:parent_id] %>
       <%= form.hidden_field :parent_id, value: parent_id %>
     <% end %>
-    <%= link_to 'Cancel', comment %>
+    <%= link_to 'Cancel', :back %>
     <%= form.submit %>
   </div>
 <% end %>
