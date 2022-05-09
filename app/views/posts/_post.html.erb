@@ -21,19 +21,7 @@
       </div>
     <% end %>
 
-    <% if current_user.id.in?(post.reactions.pluck(:user_id)) %>
-      <% post.reactions.each do |reaction| %>
-        <%= next unless reaction.user_id == current_user.id %>
-        <%= render 'reactions/unreact', reaction: reaction %>
-      <% end %>
-    <% else %>
-      <%= button_to 'Like this post', post_reactions_path(post) %>
-    <% end %>
-
-    <%= link_to pluralize(post.reactions.size, 'like'),
-         post_reactions_path(post),
-         data: { turbo_frame: nested_dom_id(post, 'reactions') } %>
-    <%= turbo_frame_tag nested_dom_id(post, 'reactions') %>
+    <%= render 'reactions/reaction_navigation', reactable: post %>
 
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>

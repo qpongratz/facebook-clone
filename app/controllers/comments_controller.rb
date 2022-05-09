@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: "Comment was successfully updated." }
+        format.html { redirect_to @comment.commentable, notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
         format.turbo_stream
       else

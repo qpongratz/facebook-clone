@@ -12,7 +12,7 @@ class ReactionsController < ApplicationController
     build_reaction
 
     if @reaction.save
-      redirect_to @reactable, notice: 'You liked it'
+      redirect_back_or_to root_path, notice: 'You liked it'
     else
       redirect_back_or_to root_path, notice: 'Something went wrong'
     end
@@ -21,7 +21,7 @@ class ReactionsController < ApplicationController
   def destroy
     @reaction.destroy
 
-    redirect_back_or_to root_path
+    redirect_back_or_to root_path, notice: 'Unliked!'
   end
 
   private

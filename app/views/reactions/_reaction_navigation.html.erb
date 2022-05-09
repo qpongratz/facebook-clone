@@ -1,0 +1,13 @@
+    <% if current_user.id.in?(reactable.reactions.pluck(:user_id)) %>
+      <% reactable.reactions.each do |reaction| %>
+        <%= next unless reaction.user_id == current_user.id %>
+        <%= render 'reactions/unreact', reaction: reaction %>
+      <% end %>
+    <% else %>
+      <%= button_to 'Like', [reactable, Reaction.new] %>
+    <% end %>
+
+    <%= link_to pluralize(reactable.reactions.size, 'like'),
+         [reactable, Reaction],
+         data: { turbo_frame: nested_dom_id(reactable, 'reactions') } %>
+    <%= turbo_frame_tag nested_dom_id(reactable, 'reactions') %>
