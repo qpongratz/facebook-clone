@@ -3,9 +3,7 @@
 one:
   user: mary
   reactable: one (Post)
-  reactable_type: post
 
 two:
   user: mary
   reactable: one (Comment)
-  reactable_type: comment
