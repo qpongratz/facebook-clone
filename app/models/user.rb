@@ -4,14 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
+
+  # has_many :outgoing_requests, class_name: 'FriendshipRequest', foreign_key: :requester, dependent: :destroy
+  # has_many :incoming_requests, class_name: 'FriendshipRequest', foreign_key: :receiver, dependent: :destroy
+  # has_many :requesters, through: :incoming_requests
+  # has_many :receivers, through: :outgoing_requests
+  # has_many :friendships, dependent: :destroy
+  # has_many :inverse_friendships, foreign_key: :friend, dependent: :destroy
+  # has_many :friends, through: :friendships
+
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :reactions, dependent: :destroy
+
   has_many :outgoing_friendships, class_name: 'Friendship', foreign_key: :requester_id, dependent: :destroy
   has_many :incoming_friendships, class_name: 'Friendship', foreign_key: :friend_id, dependent: :destroy
   has_many :friends, through: :outgoing_friendships
   has_many :requesters, through: :incoming_friendships
   has_many :accepted_friends
-  has_many :comments, dependent: :destroy
-  has_many :reactions, dependent: :destroy
 
   scope :all_except, ->(user) { where.not(id: user) }
 
