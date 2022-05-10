@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @post = Post.includes(:user, comments: :user)
+    @post = Post.includes(:user, comments: %i[user reactions])
                 .find(params[:id])
     # Add check here for if user is authorized to actually see this post
   end
