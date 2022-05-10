@@ -272,7 +272,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, Pusher.facebook_app_id , Pusher.facebook_secret_key,
+  config.omniauth :facebook, ENV['facebook_app_id'] , ENV['facebook_secret_key'],
                   scope: 'email,public_profile',
                   info_fields: 'first_name,last_name,email'
 
