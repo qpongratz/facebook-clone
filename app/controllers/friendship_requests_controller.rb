@@ -1,6 +1,6 @@
 class FriendshipRequestsController < ApplicationController
   before_action :set_friendship_request, only: %i[destroy accept]
-  before_action :set_participants, only: %i[accept]
+  before_action :set_participants
 
   def create
     @user_id = params[:user_id]

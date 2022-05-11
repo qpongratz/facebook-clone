@@ -1,5 +1,5 @@
 <%= link_to "#{user.first_name} #{user.last_name}", user %>
-<%= turbo_frame_tag user do %>
+<%= turbo_frame_tag nested_dom_id(user, 'manage_friendship') do %>
   <%= render 'friendships/manage', user: user %>
 <% end %>
 <br>

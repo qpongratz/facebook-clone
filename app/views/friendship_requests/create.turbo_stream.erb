@@ -1,0 +1,3 @@
+<% user = @requester if @receiver == current_user %>
+<% user = @receiver if @requester == current_user %>
+<%= turbo_stream.update nested_dom_id(user, 'manage_friendship'), partial: 'friendships/manage', locals: {user: user } %>
