@@ -5,13 +5,6 @@
   <%= @user.name %>'s Profile
 </h1>
 
-<!--
-
-<h2><%= link_to "#{@user.name}'s Friends", user_friendships_path(@user), data: {turbo_frame: 'profile_tab'} %></h2>
-
-<%= turbo_frame_tag 'profile_tab' %>
-
--->
 <h2><%= "#{@user.name}'s Posts"  %></h2>
 
 <%= render @posts %>
