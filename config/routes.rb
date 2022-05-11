@@ -12,9 +12,13 @@ Rails.application.routes.draw do
 
   devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :users, only: %i[index show] do
-    resources :friendships, only: %i[index create update destroy]
+  resources :users, only: %i[index show]
+
+  resources :friendship_requests, only: %i[create destroy] do
+    post 'accept', on: :member
   end
+  resources :friendships, only: %i[create destroy]
+
   root 'pages#home'
   get '/home', to: 'pages#home'
 end
