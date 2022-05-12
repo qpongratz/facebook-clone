@@ -4,8 +4,8 @@ class FriendshipRequestsController < ApplicationController
   before_action :find_turbo_user, only: %i[destroy]
 
   def index
-    @incoming_requests = @user.incoming_requests
-    @outgoing_requests = @user.outgoing_requests
+    @incoming_requests = @user.incoming_requests.includes(requester: %i[friendships incoming_requests outgoing_requests])
+    @outgoing_requests = @user.outgoing_requests.includes(receiver: %i[friendships incoming_requests outgoing_requests])
   end
 
   def create
