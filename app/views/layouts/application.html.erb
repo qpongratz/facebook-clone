@@ -17,6 +17,7 @@
     <%= link_to 'Users list', users_path %>
     <% if  current_user %>
       <%= button_to 'Sign out', destroy_user_session_path,  method: :delete, form: { data: { turbo: false } } %>
+      <%= link_to "#{pluralize(current_user.incoming_requests.count, 'pending request')}", user_friendship_requests_path(current_user) %>
     <% else %>
       <%= link_to 'Sign up', new_user_registration_path %>
       <%= link_to 'Sign in', new_user_session_path %>

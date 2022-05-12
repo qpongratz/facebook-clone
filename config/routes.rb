@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     { omniauth_callbacks: 'users/omniauth_callbacks',
       registrations: 'users/registrations' }
 
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show] do
+    resources :friendship_requests, only: %i[index]
+    resources :friendships, only: %i[index]
+  end
 
   resources :friendship_requests, only: %i[create destroy] do
     post 'accept', on: :member
