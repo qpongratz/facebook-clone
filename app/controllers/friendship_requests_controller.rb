@@ -1,6 +1,12 @@
 class FriendshipRequestsController < ApplicationController
+  before_action :set_user, only: %i[index]
   before_action :set_friendship_request, only: %i[destroy accept]
   before_action :find_turbo_user, only: %i[destroy]
+
+  def index
+    @incoming_requests = @user.incoming_requests
+    @outgoing_requests = @user.outgoing_requests
+  end
 
   def create
     @user = User.find(params[:user_id])
@@ -40,6 +46,10 @@ class FriendshipRequestsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def find_turbo_user
     @user = (current_user == @friendship_request.receiver ? @friendship_request.requester : @friendship_request.receiver)
