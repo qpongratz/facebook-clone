@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :reactions, only: %i[destroy]
 
-  devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers:
+    { omniauth_callbacks: 'users/omniauth_callbacks',
+      registrations: 'users/registrations' }
 
   resources :users, only: %i[index show]
 
