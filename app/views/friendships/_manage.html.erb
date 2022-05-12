@@ -1,15 +1,10 @@
-<% user.friendships.each do |friendship| %>
-  <% if friendship.friend == current_user %>
-    <%= button_to 'Unfriend', friendship, method: :delete %>
-  <% end %>
+<% if (friendship = user.friendships.select { |f| f.friend_id == current_user.id }.first) %>
+  <%= button_to 'Unfriend', friendship, method: :delete %>
+<% elsif request = user.requests.select { |r| r.requester_id == current_user.id }.first %>
+  <%= button_to 'Cancel Request', request, method: :delete %>
+<% elsif request = user.requests.select { |r| r.receiver_id == current_user.id }.first %>
+  <%= button_to 'Accept Request', accept_friendship_request_path(request) %>
+  <%= button_to 'Reject Request', request, method: :delete %>
+<% else %>
+  <%= button_to 'Send Friend Request', friendship_requests_path, params: {user_id: user.id} %>
 <% end %>
-<% user.requests.each do |request| %>
-  <% if request.requester_id == current_user.id %>
-    <%= button_to 'Cancel Request', request, method: :delete %>
-  <% elsif request.receiver_id == current_user.id %>
-    <%= button_to 'Accept Request', accept_friendship_request_path(request) %>
-    <%= button_to 'Reject Request', request, method: :delete %>
-  <% end %>
-<% end %>
-<%= button_to 'Send Friend Request', friendship_requests_path, params: {user_id: user.id} %>
-
