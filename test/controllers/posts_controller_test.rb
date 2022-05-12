@@ -22,7 +22,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: { content: @post.content, user_id: @post.user_id } }
     end
 
-    assert_redirected_to posts_url
+    assert_redirected_to post_path(Post.last)
   end
 
   test "should show post" do
@@ -36,8 +36,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update post" do
-    patch post_url(@post), params: { post: { content: @post.content, user_id: @post.user_id } }
-    assert_redirected_to posts_url
+    patch post_url(@post), params: { post: { content: 'Edited content', user_id: @post.user_id } }
+    assert_redirected_to @post
+    @post.reload
+    assert_equal 'Edited content', @post.content
   end
 
   test "should destroy post" do
