@@ -1,25 +1,47 @@
 <%= turbo_frame_tag post do %>
   <div class='post'>
-    <p>
-      <strong>Content:</strong>
-      <%= post.content %>
-    </p>
 
-    <p>
-      <strong>User:</strong>
-      <%= post.user.first_name %>
-      <%= post.user.last_name %>
-    </p>
+    <div class="post_header">
+      <div class="post_info">
+        <div class="display_on_hover">
+          <span class='display_on_hover_show'>
+            <%= link_to post.user.name, post.user, data: { turbo_frame: '_top' } %>
+          </span>
+          <div class="display_on_hover_hidden">
+            <p>Hook up to user hovercard lazy loading at some point</p>
+          </div>
+        </div>
 
-    <%= link_to "Show this post", post, data: { turbo_frame: '_top'} %>
+        <div class="display_on_hover">
+          <span class='display_on_hover_show'>
+            <%= time_ago_in_words(post.created_at) %> ago
+          </span>
+          <div class="display_on_hover_hidden">
+            <%= post.created_at.to_formatted_s(:long) %>
+          </div>
+        </div>
 
-    <% if current_user == post.user %>
-      <div>
-        <%= link_to "Edit this post", edit_post_path(post) %>
-
-        <%= button_to "Destroy this post", post, method: :delete %>
       </div>
-    <% end %>
+      <div class='post_options'>
+        <details>
+          <summary>Options</summary>
+          <div class="display_on_click">
+            <% if current_user == post.user %>
+              <%= link_to "Edit this post", edit_post_path(post) %>
+              <%= button_to "Destroy this post", post, method: :delete %>
+            <% end %>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <div class="post_content">
+      <p>
+        <%= post.content %>
+      </p>
+    </div>
+
 
     <%= render 'reactions/reaction_navigation', reactable: post %>
 
