@@ -16,7 +16,7 @@
           <span class='display_on_hover_show'>
             <%= time_ago_in_words(post.created_at) %> ago
           </span>
-          <div class="display_on_hover_hidden">
+          <div class="display_on_hover_hidden info_card">
             <%= post.created_at.to_formatted_s(:long) %>
           </div>
         </div>
@@ -42,27 +42,26 @@
       </p>
     </div>
 
+    <div class="post_stats">
+      <div class="post_stats_reactions">
+        <% if post.reactions.size > 0 %>
+          <%= render 'reactions/reaction_count', reactable: post%>
+        <% end %>
+      </div>
+      <div class="post_stats_comments">
+        <% if post.comments.size > 0 %>
+          <%= post.comments.size %> comments
+        <% end %>
+      </div>
+    </div>
 
-    <%= render 'reactions/reaction_navigation', reactable: post %>
+    <%#= render 'reactions/reaction_navigation', reactable: post %>
 
     <ul>
       <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-
         <%= render post.comments %>
-
-        <%#= sorted_nested_li(post.comments, :id) do |comment| %>
-          <%#= render comment, commentable: post %>
-          <%#= turbo_frame_tag nested_dom_id(post, comment.id, 'comments') %>
-        <%# end %>
       <% end %>
     </ul>
-
-      <%#= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-        <%# post.comments.each do |comment| %>
-          <%# next unless comment.root? %>
-          <%#= render comment, commentable: post%>
-        <%# end %>
-      <%# end %>
 
     <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
 
