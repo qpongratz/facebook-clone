@@ -1,8 +1,8 @@
 <h1>Posts</h1>
 
-<%= link_to "New post", new_post_path, data: { turbo_frame: 'new_post' }%>
-
-<%= turbo_frame_tag 'new_post' %>
+<%= turbo_frame_tag 'new_post' do %>
+  <% render 'posts/form', post: Post.new %>
+<% end %>
 
 <%= turbo_frame_tag 'posts' do %>
   <%= render @posts %>
