@@ -1,0 +1,19 @@
+.display_on_hover {
+  position: relative;
+  width: fit-content;
+
+  &_hidden{
+    display: none;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    padding: 1rem;
+    background-color: hsla(0, 0%, 20%, 0.848);
+    color: white;
+    width: max-content;
+  }
+
+  &:hover &_hidden {
+    display: inline;
+  }
+}
