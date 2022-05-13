@@ -50,20 +50,23 @@
       </div>
       <div class="post_stats_comments">
         <% if post.comments.size > 0 %>
-          <%= post.comments.size %> comments
+          <%= link_to "#{post.comments.size} comments", post_comments_path(post), data: {turbo_frame: nested_dom_id(post, 'comments')} %>
         <% end %>
       </div>
     </div>
 
     <%#= render 'reactions/reaction_navigation', reactable: post %>
 
-    <ul>
-      <%= turbo_frame_tag nested_dom_id(post, 'comments') do %>
-        <%= render post.comments %>
-      <% end %>
-    </ul>
+    <div class="post_interaction">
+      <p>Like Button Here</p>
+      <p>Comment Button Here</p>
+    </div>
 
-    <%= turbo_frame_tag nested_dom_id(post, 'new_comment') %>
+
+    <%= turbo_frame_tag nested_dom_id(post, 'comments') %>
+
+    <%= turbo_frame_tag nested_dom_id(post, 'new_comment') do %>
+    <% end %>
 
     <%= link_to 'Add a comment',
                 new_post_comment_path(post),
