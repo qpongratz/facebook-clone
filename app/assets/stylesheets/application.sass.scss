@@ -1,9 +1,15 @@
 // Entry point for your Sass build
+
 // Config
 @import 'config/normalize';
+@import 'config/variables';
+
+// Layouts
+@import 'layouts/main';
 
 // Components
 @import 'components/post';
 @import 'components/comment';
 @import 'components/hover';
 @import 'components/hidden';
+@import 'components/btn';
