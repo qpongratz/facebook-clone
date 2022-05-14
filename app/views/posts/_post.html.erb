@@ -57,8 +57,10 @@
       </div>
       <%#= render 'reactions/reaction_navigation', reactable: post %>
       <div class="post_interaction">
-        <p>Like Button Here</p>
-        <p>Comment Button Here</p>
+        <a>Like!</a>
+        <%= link_to 'Add a comment',
+          new_post_comment_path(post),
+          data: { turbo_frame: nested_dom_id(post, 'new_comment') } %>
       </div>
       <div class='hidden' data-hidden-target='display'>
         <%= turbo_frame_tag nested_dom_id(post, 'comments'), src: [post, :comments], loading: :lazy do %>
@@ -67,9 +69,6 @@
       </div>
       <%= turbo_frame_tag nested_dom_id(post, 'new_comment') do %>
       <% end %>
-      <%= link_to 'Add a comment',
-                  new_post_comment_path(post),
-                  data: { turbo_frame: nested_dom_id(post, 'new_comment') } %>
     </div>
 
   </div>
