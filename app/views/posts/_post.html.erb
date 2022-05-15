@@ -5,7 +5,7 @@
       <div class="post_info">
         <div class="display_on_hover">
           <span class='display_on_hover_show'>
-            <%= link_to post.user.name, post.user, data: { turbo_frame: '_top' } %>
+            <%= link_to post.user.name, post.user, data: { turbo_frame: '_top' }, class: 'link' %>
           </span>
           <div class="display_on_hover_hidden">
             <p>Hook up to user hovercard lazy loading at some point</p>
@@ -13,7 +13,7 @@
         </div>
 
         <div class="display_on_hover">
-          <span class='display_on_hover_show'>
+          <span class='display_on_hover_show link'>
             <%= time_ago_in_words(post.created_at) %> ago
           </span>
           <div class="display_on_hover_hidden info_card">
@@ -51,7 +51,7 @@
         </div>
         <div class="post_stats_comments">
           <% if post.comments.size > 0 %>
-            <%= link_to "#{post.comments.size} comments", 'javascript:;', data: { action: 'hidden#toggle' } %>
+            <%= link_to "#{post.comments.size} comments", 'javascript:;', data: { action: 'hidden#toggle' }, class: 'link' %>
           <% end %>
         </div>
       </div>
