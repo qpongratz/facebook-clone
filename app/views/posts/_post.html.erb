@@ -12,14 +12,7 @@
           </div>
         </div>
 
-        <div class="display_on_hover">
-          <span class='display_on_hover_show link'>
-            <%= time_ago_in_words(post.created_at) %> ago
-          </span>
-          <div class="display_on_hover_hidden info_card">
-            <%= post.created_at.to_formatted_s(:long) %>
-          </div>
-        </div>
+        <%= render 'shared/timestamp', object: post %>
       </div>
 
       <div class='post_options'>
