@@ -16,15 +16,18 @@
       </div>
 
       <div class='post_options'>
-        <details>
-          <summary>Options</summary>
-          <div class="display_on_click">
-            <% if current_user == post.user %>
-              <%= link_to "Edit this post", edit_post_path(post) %>
-              <%= button_to "Destroy this post", post, method: :delete %>
-            <% end %>
+        <div class='options' data-controller='hidden'>
+          <div class="options_button" data-action='click->hidden#toggle'>
+            Options
           </div>
-        </details>
+          <ul class='options_menu hidden' data-hidden-target='display' >
+            <li><%= link_to 'Show post', post, data: {turbo_frame: '_top'}, class: 'btn'%></li>
+            <% if current_user == post.user %>
+              <li><%= link_to "Edit this post", edit_post_path(post), class: 'btn' %></li>
+              <li><%= button_to "Destroy this post", post, method: :delete, class: 'btn' %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
 
