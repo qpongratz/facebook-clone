@@ -19,9 +19,7 @@
 
     <div class="comment_reactions">
       <%= render 'reactions/reaction_navigation', reactable: comment %>
-      <% if comment.reactions.size > 0 %>
-        <%= render 'reactions/reaction_count', reactable: comment %>
-      <% end %>
+      <%= render 'reactions/reaction_count', reactable: comment %>
       <%= render 'shared/timestamp', object: comment %>
     </div>
 

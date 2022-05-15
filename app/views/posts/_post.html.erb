@@ -38,9 +38,7 @@
 
       <div class="post_stats">
         <div class="post_stats_reactions">
-          <% if post.reactions.size > 0 %>
-            <%= render 'reactions/reaction_count', reactable: post%>
-          <% end %>
+          <%= render 'reactions/reaction_count', reactable: post%>
         </div>
         <div class="post_stats_comments">
           <% if post.comments.size > 0 %>

@@ -1,10 +1,12 @@
-<div class="display_on_hover">
-  <span class='display_on_hover_show'>
-    <%= link_to pluralize(reactable.reactions.size, 'like'), [reactable, :reactions], data: {turbo_frame: '_top'}, class: 'link' %>
-  </span>
-  <div class="display_on_hover_hidden">
-    <%= turbo_frame_tag nested_dom_id(reactable, 'reactions'), src: [reactable, :reactions], loading: :lazy do %>
-      Loading...
-    <% end %>
+<% if reactable.reactions.size > 0 %>
+  <div class="display_on_hover">
+    <span class='display_on_hover_show'>
+      <%= link_to pluralize(reactable.reactions.size, 'like'), [reactable, :reactions], data: {turbo_frame: '_top'}, class: 'link' %>
+    </span>
+    <div class="display_on_hover_hidden">
+      <%= turbo_frame_tag nested_dom_id(reactable, 'reactions'), src: [reactable, :reactions], loading: :lazy do %>
+        Loading...
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
