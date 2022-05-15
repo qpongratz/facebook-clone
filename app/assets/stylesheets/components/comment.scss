@@ -1,7 +1,19 @@
 .comment {
-  border: grey dashed;
+  list-style-type: none;
 
-  + .comment {
-    border-top: none;
+  &_wrapper {
+    width: 100%;
+    overflow-wrap: break-word;
+    background-color: var(--accent-bg-color);
+    border-radius: var(--border-radius);
+    padding: .5rem;
   }
+
+  &_reactions {
+    display: flex;
+    gap: .5rem;
+
+  }
+
+
 }
