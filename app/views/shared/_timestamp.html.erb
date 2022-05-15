@@ -1,0 +1,8 @@
+<div class="display_on_hover">
+  <span class='display_on_hover_show link'>
+    <%= time_ago_in_words(object.created_at) %> ago
+  </span>
+  <div class="display_on_hover_hidden info_card">
+    <%= object.created_at.to_formatted_s(:long) %>
+  </div>
+</div>
