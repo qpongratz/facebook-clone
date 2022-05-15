@@ -1,10 +1,9 @@
 .post {
-  border: solid var(--accent-border-color) 1px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .10);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .10);
   max-width: 40rem;
   background-color: var(--primary-bg-color);
   padding: .2rem .5rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
   border-radius: var(--border-radius);
 
   &_header,
@@ -14,7 +13,10 @@
   }
 
   &_interaction {
+    padding: .3rem 0;
     display: flex;
+    border-top: solid 1px var(--accent-border-color);
+    border-bottom: solid 1px var(--accent-border-color);
 
     & > * {
       width: 100%;
