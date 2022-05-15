@@ -1,0 +1,28 @@
+.text_form{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+
+  &_text {
+    flex-grow: 1;
+
+
+    &_input {
+    border-radius: var(--border-radius);
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--accent-bg-color);
+    resize: none;
+    height: 2rem;
+    padding: .5rem;
+    width: 100%;
+
+      &:hover{
+        background-color: var(--accent-bg-color-dark);
+      }
+   }
+
+  }
+}
