@@ -1,23 +1,30 @@
 <%= turbo_frame_tag comment do %>
   <li class='comment' id="<%= dom_id comment %>">
-    <strong><%= comment.user.name %>:</strong>
-
-    <p>
-      <%= comment.content %>
-    </p>
-    <% if current_user == comment.user %>
-      <div>
-        <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
-        <%= link_to "Edit this comment", edit_comment_path(comment) %>
-        <%= button_to "Destroy this comment", comment, method: :delete %>
+    <div class='comment_wrapper'>
+      <div class="link">
+        <!-- this will eventually be rendering the user hover thing -->
+        <strong><%= comment.user.name %></strong>
       </div>
-    <% end %>
 
-    <%= render 'reactions/reaction_navigation', reactable: comment %>
-    <%#= turbo_frame_tag nested_dom_id(commentable, comment.id, 'new_comment') %>
-    <%#= link_to 'Add a reply',
-                [:new, commentable, :comment, parent_id: comment.id],
-                data: { turbo_frame: nested_dom_id(commentable, comment.id, 'new_comment') } %>
+      <div class="comment_content"><%= comment.content %></div>
+
+      <% if current_user == comment.user %>
+        <div class='hidden'>
+          <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
+          <%= link_to "Edit this comment", edit_comment_path(comment) %>
+          <%= button_to "Destroy this comment", comment, method: :delete %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="comment_reactions">
+      <%= render 'reactions/reaction_navigation', reactable: comment %>
+      <% if comment.reactions.size > 0 %>
+        <%= render 'reactions/reaction_count', reactable: comment %>
+      <% end %>
+      <%= render 'shared/timestamp', object: comment %>
+    </div>
+
   </li>
 <% end %>
 
