@@ -1,8 +1,10 @@
 <h1>Posts</h1>
 
-<%= turbo_frame_tag 'new_post', src: new_post_path do %>
-  <%# Eager load in a fake block that you can't type into at some point%>
-<% end %>
+<div class="post">
+  <%= turbo_frame_tag 'new_post', src: new_post_path do %>
+    <%# Eager load in a fake block that you can't type into at some point%>
+  <% end %>
+</div>
 
 <%= turbo_frame_tag 'posts' do %>
   <%= render @posts %>
