@@ -13,13 +13,13 @@
           <div class="options_button" data-action='click->hidden#toggle'>
             Options
           </div>
-          <div class='options_menu hidden' data-hidden-target='display' >
-            <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
+          <ul class='options_menu hidden' data-hidden-target='display' >
+            <li><%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}, class: 'btn'%></li>
             <% if current_user == comment.user %>
-              <%= link_to "Edit this comment", edit_comment_path(comment) %>
-              <%= button_to "Destroy this comment", comment, method: :delete %>
+              <li><%= link_to "Edit this comment", edit_comment_path(comment), class: 'btn' %></li>
+              <li><%= button_to "Destroy this comment", comment, method: :delete, class: 'btn' %></li>
             <% end %>
-          </div>
+          </ul>
         </div>
       </div>
     </div>
