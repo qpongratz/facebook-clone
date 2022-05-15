@@ -1,20 +1,27 @@
 <%= turbo_frame_tag comment do %>
   <li class='comment' id="<%= dom_id comment %>">
-    <div class='comment_wrapper'>
-      <div class="link">
-        <!-- this will eventually be rendering the user hover thing -->
-        <strong><%= comment.user.name %></strong>
-      </div>
-
-      <div class="comment_content"><%= comment.content %></div>
-
-      <% if current_user == comment.user %>
-        <div class='hidden'>
-          <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
-          <%= link_to "Edit this comment", edit_comment_path(comment) %>
-          <%= button_to "Destroy this comment", comment, method: :delete %>
+    <div class="comment_wrapper">
+      <div class='comment_content'>
+        <div class="link">
+          <!-- this will eventually be rendering the user hover thing -->
+          <strong><%= comment.user.name %></strong>
         </div>
-      <% end %>
+        <div class="comment_content_text"><%= comment.content %></div>
+      </div>
+      <div class="comment_options">
+        <div class='options' data-controller='hidden'>
+          <div class="options_button" data-action='click->hidden#toggle'>
+            Options
+          </div>
+          <div class='options_menu hidden' data-hidden-target='display' >
+            <%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}%>
+            <% if current_user == comment.user %>
+              <%= link_to "Edit this comment", edit_comment_path(comment) %>
+              <%= button_to "Destroy this comment", comment, method: :delete %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="comment_reactions">

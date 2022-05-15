@@ -1,8 +1,13 @@
 .comment {
   list-style-type: none;
 
-  &_wrapper {
-    width: 100%;
+  &_wrapper{
+    display: flex;
+    align-items: center;
+  }
+
+  &_content {
+    min-width: 40%;
     overflow-wrap: break-word;
     background-color: var(--accent-bg-color);
     border-radius: var(--border-radius);
