@@ -5,8 +5,11 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  box-shadow: none;
+  border-style: none;
   color: var(--secondary-text-color);
   transition: background-color 200ms;
+  background-color: transparent;
 
   &:hover {
     background-color: var(--accent-bg-color);
