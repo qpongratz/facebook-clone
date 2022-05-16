@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ButtonSubmitController from "./button_submit_controller.js"
+application.register("button-submit", ButtonSubmitController)
+
 import FocusController from "./focus_controller.js"
 application.register("focus", FocusController)
 
