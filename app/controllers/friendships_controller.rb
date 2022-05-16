@@ -1,6 +1,11 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship
-  before_action :find_turbo_user
+  before_action :set_friendship, only: %i[destroy]
+  before_action :find_turbo_user, only: %i[destroy]
+
+  def index
+    @user = User.find(params[:user_id])
+    @friends = @user.friends
+  end
 
   def destroy
     @friendship.destroy
@@ -11,7 +16,6 @@ class FriendshipsController < ApplicationController
   end
 
   private
-
   def set_friendship
     @friendship = Friendship.find(params[:id])
   end
