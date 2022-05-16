@@ -6,5 +6,6 @@ export default class extends Controller {
 
   focusInput() {
     this.inputTarget.focus();
+    this.inputTarget.scrollIntoView({behavior: 'smooth', block: 'center'})
   }
 }
