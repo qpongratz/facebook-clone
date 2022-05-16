@@ -9,6 +9,7 @@ export default class extends Controller {
   }
 
   resizeInput() {
+    this.inputTarget.style.height = '2rem';
     this.inputTarget.style.height = `${this.inputTarget.scrollHeight}px`;
   }
 }
