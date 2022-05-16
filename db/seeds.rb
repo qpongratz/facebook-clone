@@ -41,7 +41,7 @@ puts 'Seeding friendships...'
 all_users.each do |user|
   next if user.id == 1
 
-  user.outgoing_requests.create(friend_id: test.id)
+  user.outgoing_requests.create(receiver_id: test.id)
 end
 
 puts 'Seeding Complete'
