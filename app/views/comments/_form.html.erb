@@ -14,13 +14,15 @@
   <div class="text_form">
     <div class='text_form_text'>
       <%= form.label :content, style: "display: none" %>
-      <%= form.text_area :content, class: 'text_form_text_input'%>
+      <%= form.text_area :content,
+        class: 'text_form_text_input',
+        placeholder: 'Add a comment',
+        data: { focus_target: 'input' } %>
     </div>
     <div class='text_form_button'>
       <% if local_assigns[:parent_id] %>
         <%= form.hidden_field :parent_id, value: parent_id %>
       <% end %>
-      <%= link_to 'Cancel', commentable, class: 'btn' %>
       <%= form.submit class: 'btn' %>
     </div>
   </div>

@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HiddenController from "./hidden_controller.js"
 application.register("hidden", HiddenController)
+
+import FocusController from "./focus_controller.js"
+application.register("focus", FocusController)

@@ -37,7 +37,7 @@
       </p>
     </div>
 
-    <div class="post_footer" data-controller='hidden'>
+    <div class="post_footer" data-controller='focus hidden'>
 
       <div class="post_stats">
         <div class="post_stats_reactions">
@@ -52,9 +52,9 @@
       <%#= render 'reactions/reaction_navigation', reactable: post %>
       <div class="post_interaction">
         <a class='btn'>Like!</a>
-        <%= link_to 'Add a comment',
-          new_post_comment_path(post),
-          data: { turbo_frame: nested_dom_id(post, 'new_comment') },
+        <%= link_to 'Comment',
+          'javascript:;',
+          data: { action: 'click->focus#focusInput'  },
           class: 'btn' %>
       </div>
       <div class='hidden' data-hidden-target='display'>
@@ -62,7 +62,8 @@
           Loading...
         <% end %>
       </div>
-      <%= turbo_frame_tag nested_dom_id(post, 'new_comment') do %>
+      <%= turbo_frame_tag nested_dom_id(post, 'new_comment'), src: new_post_comment_path(post), loading: :lazy do %>
+        Loading...
       <% end %>
     </div>
 
