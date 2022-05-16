@@ -17,7 +17,7 @@
       <%= form.text_area :content,
         class: 'text_form_text_input',
         placeholder: 'Add a comment',
-        data: { focus_target: 'input' } %>
+        data: { focus_target: 'input', resize_target: 'input', controller: 'resize', action: 'resize#resizeInput' } %>
     </div>
     <div class='text_form_button'>
       <% if local_assigns[:parent_id] %>
