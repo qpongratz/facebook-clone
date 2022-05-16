@@ -17,14 +17,14 @@
 
       <div class='post_options'>
         <div class='options' data-controller='hidden'>
-          <div class="options_button" data-action='click->hidden#toggle'>
+          <div class="options_button btn btn_dark" data-action='click->hidden#toggle'>
             Options
           </div>
           <ul class='options_menu hidden' data-hidden-target='display' >
-            <li><%= link_to 'Show post', post, data: {turbo_frame: '_top'}, class: 'btn'%></li>
+            <li><%= link_to 'Show post', post, data: {turbo_frame: '_top'}, class: 'btn btn_dark'%></li>
             <% if current_user == post.user %>
-              <li><%= link_to "Edit this post", edit_post_path(post), class: 'btn' %></li>
-              <li><%= button_to "Destroy this post", post, method: :delete, class: 'btn' %></li>
+              <li><%= link_to "Edit this post", edit_post_path(post), class: 'btn btn_dark' %></li>
+              <li><%= button_to "Destroy this post", post, method: :delete, class: 'btn btn_dark' %></li>
             <% end %>
           </ul>
         </div>

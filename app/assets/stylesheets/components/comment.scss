@@ -4,10 +4,12 @@
   &_wrapper{
     display: flex;
     align-items: center;
+    gap: .5rem;
   }
 
   &_content {
     min-width: 40%;
+    width: 100%;
     overflow-wrap: break-word;
     background-color: var(--accent-bg-color);
     border-radius: var(--border-radius);

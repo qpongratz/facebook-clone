@@ -15,4 +15,8 @@
   &:hover {
     background-color: var(--accent-bg-color);
   }
+
+  &_dark {
+    color: var(--primary-text-color);
+  }
 }
