@@ -13,5 +13,8 @@ application.register("focus", FocusController)
 import HiddenController from "./hidden_controller.js"
 application.register("hidden", HiddenController)
 
+import PopupController from "./popup_controller.js"
+application.register("popup", PopupController)
+
 import ResizeController from "./resize_controller.js"
 application.register("resize", ResizeController)
