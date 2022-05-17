@@ -1,5 +1,5 @@
 <%= turbo_frame_tag comment do %>
-  <li class='comment' id="<%= dom_id comment %>">
+  <div class='comment' id="<%= dom_id comment %>">
     <div class="comment_wrapper">
       <div class='comment_content'>
         <div class="link">
@@ -19,6 +19,6 @@
       <%= render 'shared/timestamp', object: comment %>
     </div>
 
-  </li>
+  </div>
 <% end %>
 
