@@ -36,9 +36,8 @@
           <% end %>
         </div>
       </div>
-      <%#= render 'reactions/reaction_navigation', reactable: post %>
       <div class="post_interaction">
-        <a class='btn'>Like!</a>
+        <%= render 'reactions/button', reactable: post %>
         <%= link_to 'Comment',
           'javascript:;',
           data: { action: 'click->focus#focusInput'  },
