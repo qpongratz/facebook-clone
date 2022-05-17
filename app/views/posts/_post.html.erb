@@ -31,8 +31,8 @@
           <%= render 'reactions/reaction_count', reactable: post%>
         </div>
         <div class="post_stats_comments">
-          <% if post.comments.size > 0 %>
-            <%= link_to "#{post.comments.size} comments", 'javascript:;', data: { action: 'hidden#toggle' }, class: 'link' %>
+          <%= turbo_frame_tag nested_dom_id(post, 'comment_count') do %>
+            <%= render 'comments/count', object: post %>
           <% end %>
         </div>
       </div>
@@ -43,11 +43,8 @@
           data: { action: 'click->focus#focusInput'  },
           class: 'btn' %>
       </div>
-      <div class='hidden' data-hidden-target='display'>
-        <%= turbo_frame_tag nested_dom_id(post, 'comments'), src: [post, :comments], loading: :lazy do %>
-          Loading...
-        <% end %>
-      </div>
+      <%= turbo_frame_tag nested_dom_id(post, 'comments'), class: 'hidden', data: { hidden_target: 'display' } %>
+      <%= turbo_frame_tag nested_dom_id(post, 'appended_comments'), data: {hidden_target: 'clear'} %>
       <%= turbo_frame_tag nested_dom_id(post, 'new_comment'), src: new_post_comment_path(post), loading: :lazy do %>
         Loading...
       <% end %>
