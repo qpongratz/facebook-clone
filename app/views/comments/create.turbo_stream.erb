@@ -4,3 +4,6 @@
 <%= turbo_stream.update nested_dom_id(@commentable, 'comment_count') do %>
   <%= render 'comments/count', object: @commentable %>
 <% end %>
+<%= turbo_stream.update nested_dom_id(@commentable, 'new_comment') do %>
+  <%= render partial: 'comments/form', locals: {commentable: @commentable, comment: Comment.new} %>
+<% end %>
