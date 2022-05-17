@@ -1,3 +1,12 @@
-<%= turbo_stream.replace nested_dom_id(@reactable, 'reaction_navigation') do %>
-  <%= render 'reactions/reaction_navigation', reactable: @reactable %>
+<% if @reactable.class.name == 'Comment' %>
+  <%= turbo_stream.replace nested_dom_id(@reactable, 'reaction_button') do %>
+    <%= render 'reactions/link', reactable: @reactable %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace nested_dom_id(@reactable, 'reaction_button') do %>
+    <%= render 'reactions/button', reactable: @reactable %>
+  <% end %>
+<% end %>
+<%= turbo_stream.update nested_dom_id(@reactable, 'reaction_count') do %>
+  <%= render 'reactions/reaction_count', reactable: @reactable %>
 <% end %>
