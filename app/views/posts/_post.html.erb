@@ -16,18 +16,7 @@
       </div>
 
       <div class='post_options'>
-        <div class='options' data-controller='popup'>
-          <div class="options_button btn btn_dark" data-popup-target='toggle' data-action='click->popup#togglePopup'>
-            Options
-          </div>
-          <ul class='options_menu hidden' data-popup-target='popup' data-action='click@window->popup#closeBackground' >
-            <li><%= link_to 'Show post', post, data: {turbo_frame: '_top'}, class: 'btn btn_dark'%></li>
-            <% if current_user == post.user %>
-              <li><%= link_to "Edit this post", edit_post_path(post), class: 'btn btn_dark' %></li>
-              <li><%= button_to "Destroy this post", post, method: :delete, class: 'btn btn_dark' %></li>
-            <% end %>
-          </ul>
-        </div>
+        <%= render 'shared/options', object: post %>
       </div>
     </div>
 

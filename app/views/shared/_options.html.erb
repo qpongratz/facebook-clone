@@ -1,0 +1,12 @@
+<div class='options' data-controller='popup'>
+  <div class="options_button btn btn_dark" data-popup-target='toggle' data-action='click->popup#togglePopup'>
+    Options
+  </div>
+  <ul class='options_menu hidden' data-popup-target='popup' data-action='click@window->popup#closeBackground' >
+    <li><%= link_to 'Show', object, data: {turbo_frame: '_top'}, class: 'btn btn_dark'%></li>
+    <% if current_user == object.user %>
+      <li><%= link_to "Edit", [:edit, object], class: 'btn btn_dark' %></li>
+      <li><%= button_to "Delete", object, method: :delete, class: 'btn btn_dark' %></li>
+    <% end %>
+  </ul>
+</div>

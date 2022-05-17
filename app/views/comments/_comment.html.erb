@@ -9,18 +9,7 @@
         <div class="comment_content_text text"><%= comment.content %></div>
       </div>
       <div class="comment_options">
-        <div class='options' data-controller='hidden'>
-          <div class="options_button btn btn_dark" data-action='click->hidden#toggle'>
-            Options
-          </div>
-          <ul class='options_menu hidden' data-hidden-target='display' >
-            <li><%= link_to 'Show comment', comment, data: {turbo_frame: '_top'}, class: 'btn btn_dark'%></li>
-            <% if current_user == comment.user %>
-              <li><%= link_to "Edit this comment", edit_comment_path(comment), class: 'btn btn_dark' %></li>
-              <li><%= button_to "Destroy this comment", comment, method: :delete, class: 'btn btn_dark' %></li>
-            <% end %>
-          </ul>
-        </div>
+        <%= render 'shared/options', object: comment %>
       </div>
     </div>
 
