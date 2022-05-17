@@ -1,5 +1,8 @@
 .link {
   text-decoration: none;
+  border-style: none;
+  background: transparent;
+  padding: 0;
 
   &:hover {
     text-decoration: underline;
