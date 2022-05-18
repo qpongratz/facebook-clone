@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include Pagy::Backend
   before_action :set_user, except: :index
 
   def index
