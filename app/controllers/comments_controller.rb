@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :set_commentable, except: %i[show edit update destroy]
 
   def index
-    @comments = @commentable.comments.ordered
+    @comments = @commentable.comments.ordered.includes(:user, :reactions)
   end
 
   def new
