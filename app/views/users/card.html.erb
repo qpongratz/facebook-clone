@@ -1,5 +1,5 @@
 <%= turbo_frame_tag nested_dom_id(@user, 'card') do %>
-  <%= @user.name %> <br>
+  <%= link_to "#{@user.name}", @user, class: 'link', data: {turbo_frame: '_top'} %> <br>
   Their school or somehting.
   <%= turbo_frame_tag nested_dom_id(@user, 'manage_friendship') do %>
     <%= render 'friendships/manage', user: @user %>
