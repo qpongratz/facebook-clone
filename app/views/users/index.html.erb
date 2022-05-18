@@ -1,4 +1,8 @@
 <h1>Users</h1>
 <%== pagy_info(@pagy) %> <br>
-<%= render @users %>
+  <ul>
+    <% @users.each do |user|%>
+      <li><%= render user %></li>
+    <% end %>
+  </ul>
 <%== pagy_nav(@pagy) %>

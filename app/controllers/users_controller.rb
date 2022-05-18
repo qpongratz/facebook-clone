@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: :index
 
   def index
-    @pagy, @users = pagy(User.includes(:friendships, :incoming_requests, :outgoing_requests).all_except(current_user))
+    @pagy, @users = pagy(User.all_except(current_user))
   end
 
   def show
