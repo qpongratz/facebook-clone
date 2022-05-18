@@ -1,5 +1,10 @@
-<%= link_to "#{user.first_name} #{user.last_name}", user %>
-<%= turbo_frame_tag nested_dom_id(user, 'manage_friendship') do %>
-  <%= render 'friendships/manage', user: user %>
-<% end %>
-<br>
+<div class="display_on_hover">
+  <span class='display_on_hover_show link'>
+    <%= link_to "#{user.name}", user, class: 'link' %>
+  </span>
+  <div class="display_on_hover_hidden display_on_hover_hidden_overlap user_card">
+    <%= turbo_frame_tag nested_dom_id(user, 'card'), src: card_user_path(user), loading: :lazy do %>
+      Loading...
+    <% end %>
+  </div>
+</div>
