@@ -5,13 +5,20 @@
   &_hidden{
     display: none;
     position: absolute;
-    top: 1.5rem;
+    top: 100%;
     left: 0;
     padding: 1rem;
     background-color: hsla(0, 0%, 20%, 0.848);
     color: white;
     width: max-content;
+    z-index: 2;
+
+    &_overlap {
+      top: auto;
+      bottom: 80%;
+    }
   }
+
 
   &:hover &_hidden {
     display: inline;
