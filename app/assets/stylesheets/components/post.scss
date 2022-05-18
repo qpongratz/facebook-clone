@@ -17,6 +17,7 @@
     display: flex;
     border-top: solid 1px var(--accent-border-color);
     border-bottom: solid 1px var(--accent-border-color);
+    margin-block: .5rem;
 
     & * {
       width: 100%;
