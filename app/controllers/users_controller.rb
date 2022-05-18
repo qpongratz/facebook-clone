@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @posts = Post.where(user_id: @user.id)
-                 .includes(:user, :reactions, comments: %i[user reactions])
+                 .includes(:user, :reactions)
   end
 
   def card
