@@ -3,9 +3,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user, :reactions)
-                 .friends_posts(current_user)
-                 .newest_first
+    @pagy, @posts = pagy(Post.includes(:user, :reactions)
+                          .friends_posts(current_user)
+                          .newest_first)
   end
 
   # GET /posts/1 or /posts/1.json

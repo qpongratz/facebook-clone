@@ -6,7 +6,11 @@
   <% end %>
 </div>
 
+
 <%= turbo_frame_tag 'posts' do %>
+  <%== pagy_nav(@pagy) %>
   <%= render @posts %>
+  <%== pagy_nav(@pagy) %>
 <% end %>
+
 
