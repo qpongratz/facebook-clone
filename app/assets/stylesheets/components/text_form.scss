@@ -1,13 +1,14 @@
 .text_form{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: .5rem;
   margin-top: .5rem;
   margin-bottom: .5rem;
 
   &_text {
     flex-grow: 1;
-
 
     &_input {
     border-radius: var(--border-radius);
@@ -18,6 +19,7 @@
     height: 2rem;
     padding: .5rem;
     width: 100%;
+    flex-basis: fit-content;
 
       &:hover{
         background-color: var(--accent-bg-color-dark);
