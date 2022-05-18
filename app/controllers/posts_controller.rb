@@ -3,9 +3,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @pagy, @posts = pagy(Post.includes(:user, :reactions)
-                          .friends_posts(current_user)
-                          .newest_first)
+    @pagy, @posts = pagy_countless(Post.includes(:user, :reactions)
+                                    .friends_posts(current_user)
+                                    .newest_first)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /posts/1 or /posts/1.json

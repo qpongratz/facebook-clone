@@ -8,9 +8,11 @@
 
 
 <%= turbo_frame_tag 'posts' do %>
-  <%== pagy_nav(@pagy) %>
   <%= render @posts %>
-  <%== pagy_nav(@pagy) %>
+<% end %>
+
+<%= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream) do %>
+ Loading...
 <% end %>
 
 
