@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations' }
 
   resources :users, only: %i[index show] do
+    get 'card', on: :member
     resources :friendship_requests, only: %i[index]
     resources :friendships, only: %i[index]
   end
