@@ -3,15 +3,7 @@
 
     <div class="post_header">
       <div class="post_info">
-        <div class="display_on_hover">
-          <span class='display_on_hover_show'>
-            <%= link_to post.user.name, post.user, data: { turbo_frame: '_top' }, class: 'link' %>
-          </span>
-          <div class="display_on_hover_hidden">
-            <p>Hook up to user hovercard lazy loading at some point</p>
-          </div>
-        </div>
-
+        <%= render post.user %>
         <%= render 'shared/timestamp', object: post %>
       </div>
 

@@ -2,10 +2,7 @@
   <div class='comment' id="<%= dom_id comment %>">
     <div class="comment_wrapper">
       <div class='comment_content'>
-        <div class="link">
-          <!-- this will eventually be rendering the user hover thing -->
-          <strong><%= comment.user.name %></strong>
-        </div>
+        <%= render comment.user %>
         <div class="comment_content_text text"><%= comment.content %></div>
       </div>
       <div class="comment_options">
