@@ -19,4 +19,11 @@
   &_dark {
     color: var(--primary-text-color);
   }
+
+  &_circle {
+    border-radius: 50%;
+    padding: .5rem;
+    width: 2rem;
+    height: 2rem;
+  }
 }
