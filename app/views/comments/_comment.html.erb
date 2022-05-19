@@ -2,20 +2,23 @@
   <div class='comment' id="<%= dom_id comment %>">
     <div class="comment_wrapper">
       <div class='comment_content'>
-        <%= render comment.user %>
+        <div class="comment_content_user">
+          <%= render comment.user %>
+        </div>
         <div class="comment_content_text text"><%= comment.content %></div>
+        <div class="comment_content_reaction_count">
+          <%= render 'reactions/reaction_count', reactable: comment %>
+        </div>
       </div>
       <div class="comment_options">
         <%= render 'shared/options', object: comment %>
       </div>
     </div>
 
-    <div class="comment_reactions">
-      <%= render 'reactions/link', reactable: comment %>
-      <%= render 'reactions/reaction_count', reactable: comment %>
-      <%= render 'shared/timestamp', object: comment %>
-    </div>
-
+    <ul class="comment_reactions">
+      <li><%= render 'reactions/link', reactable: comment %></li>
+      <li><%= render 'shared/timestamp', object: comment %></li>
+    </ul>
   </div>
 <% end %>
 

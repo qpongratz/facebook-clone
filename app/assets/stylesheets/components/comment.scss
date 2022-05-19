@@ -10,18 +10,31 @@
 
   &_content {
     min-width: 40%;
-    width: 100%;
+    width: fit-content;
     overflow-wrap: break-word;
     background-color: var(--accent-bg-color);
     border-radius: var(--border-radius);
     padding: .5rem;
+    position: relative;
+
+    &_user {
+      font-weight: bold;
+      margin-bottom: .5rem;
+    }
+    &_reaction_count {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translateY(50%);
+      background-color: inherit;
+    }
   }
 
   &_reactions {
     display: flex;
     gap: .5rem;
-
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
-
-
 }
