@@ -1,5 +1,11 @@
 <div class='options' data-controller='popup'>
-  <div class="options_button btn btn_dark" data-popup-target='toggle' data-action='click->popup#togglePopup'>
+  <div class="options_button btn btn_dark"
+       data-controller='button-click'
+       data-popup-target='toggle'
+       data-action='click->popup#togglePopup
+                    mousedown->button-click#addClicked
+                    mouseup->button-click#removeClicked
+                    mouseout->button-click#removeClicked'>
     Options
   </div>
   <ul class='options_menu hidden' data-popup-target='popup' data-action='click@window->popup#closeBackground' >
