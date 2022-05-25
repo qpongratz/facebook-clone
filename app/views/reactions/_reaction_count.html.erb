@@ -2,7 +2,9 @@
   <% if reactable.reactions.size > 0 %>
     <div class="display_on_hover">
       <span class='display_on_hover_show'>
-        <%= link_to pluralize(reactable.reactions.size, 'like'), [reactable, :reactions], data: {turbo_frame: '_top'}, class: 'link' %>
+        <%= link_to [reactable, :reactions], data: {turbo_frame: '_top'}, class: 'link' do %>
+          <i class="fa-solid fa-thumbs-up"></i>   <%= reactable.reactions.size %>
+        <% end %>
       </span>
       <div class="display_on_hover_hidden">
         <%= turbo_frame_tag nested_dom_id(reactable, 'reactions'), src: [reactable, :reactions], loading: :lazy do %>
