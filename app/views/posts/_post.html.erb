@@ -30,10 +30,11 @@
       </div>
       <div class="post_interaction">
         <%= render 'reactions/button', reactable: post %>
-        <%= link_to 'Comment',
-          'javascript:;',
+        <%= link_to 'javascript:;',
           data: { action: 'click->focus#focusInput'  },
-          class: 'btn' %>
+          class: 'btn' do %>
+          <i class="fa-regular fa-comment fa-flip-horizontal"></i> Comment
+        <% end %>
       </div>
       <%= turbo_frame_tag nested_dom_id(post, 'comments'), class: 'hidden', data: { hidden_target: 'display' } %>
       <%= turbo_frame_tag nested_dom_id(post, 'appended_comments'), data: {hidden_target: 'clear'} %>
