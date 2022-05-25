@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import ButtonClickController from "./button_click_controller.js"
-application.register("button-click", ButtonClickController)
-
 import ButtonSubmitController from "./button_submit_controller.js"
 application.register("button-submit", ButtonSubmitController)
 
