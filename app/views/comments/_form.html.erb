@@ -1,4 +1,5 @@
 <%= form_with model: [commentable, comment] do |form| %>
+  <% edit ||= false %>
   <% if comment.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -15,6 +16,7 @@
     <div class='text_form_text'>
       <%= form.label :content, class: "visuallyhidden" %>
       <%= form.text_area :content,
+        autofocus: edit,
         class: 'text_form_text_input',
         placeholder: 'Add a comment...',
         data: {controller: 'resize',  focus_target: 'input', resize_target: 'input', action: 'resize#resizeInput keypress->button-submit#submitOnReturn'} %>

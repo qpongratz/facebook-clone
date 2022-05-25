@@ -1,7 +1,7 @@
 <h1>Editing comment</h1>
 
 <%= turbo_frame_tag nested_dom_id(@comment, 'content') do %>
-  <%= render "form", comment: @comment, commentable: @commentable%>
+  <%= render "form", comment: @comment, commentable: @commentable, edit: true%>
   <%= link_to 'Cancel', @comment %>
 <% end %>
 <br>
