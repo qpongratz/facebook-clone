@@ -6,6 +6,10 @@
   margin: 1rem;
   border-radius: var(--border-radius);
 
+  @media (max-width: 600px) {
+    margin-inline: 0;
+  }
+
   &_header,
   &_stats {
     display: flex;
