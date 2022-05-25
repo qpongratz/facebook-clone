@@ -20,7 +20,7 @@
         data: {controller: 'resize', resize_target: 'input', action: 'resize#resizeInput keypress->button-submit#submitOnReturn'} %>
     </div>
     <div class='text_form_button'>
-      <%= form.button class: 'btn', data: { button_submit_target: 'button'} do %>
+      <%= form.button class: 'btn', data: { button_submit_target: 'button'}, aria:{label: 'submit'} do %>
         <i class="fa-solid fa-paper-plane"></i>
       <% end %>
     </div>
