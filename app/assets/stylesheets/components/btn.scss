@@ -12,8 +12,12 @@
   background-color: transparent;
   text-align: center;
 
-  &:hover {
+  &:hover, &:focus, &:active {
     background-color: var(--accent-bg-color);
+  }
+
+  &:active {
+    transform: scale(.97);
   }
 
   &_dark {

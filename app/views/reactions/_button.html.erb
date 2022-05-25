@@ -1,7 +1,7 @@
 <%= turbo_frame_tag nested_dom_id(reactable, 'reaction_button') do %>
   <% if reaction = reactable.reactions.select { |r| r.user_id == current_user.id }.first %>
-    <%= button_to 'Unlike', reaction, method: :delete, class: 'btn', data: { controller: 'button-click', action: 'mousedown->button-click#addClicked mouseup->button-click#removeClicked mouseout->button-click#removeClicked'} %>
+    <%= button_to 'Unlike', reaction, method: :delete, class: 'btn' %>
   <% else %>
-    <%= button_to 'Like', [reactable, Reaction.new], class: 'btn', data: { controller: 'button-click', action: 'mousedown->button-click#addClicked mouseup->button-click#removeClicked mouseout->button-click#removeClicked'}  %>
+    <%= button_to 'Like', [reactable, Reaction.new], class: 'btn' %>
   <% end %>
 <% end %>
