@@ -1,0 +1,8 @@
+body {
+  background-color: var(--accent-bg-color);
+
+  @media (min-width:600px) {
+    display: grid;
+    grid-template-columns: 1fr minmax(600px, 750px) 1fr;
+  }
+}
