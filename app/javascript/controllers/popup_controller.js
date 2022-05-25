@@ -12,6 +12,16 @@ export default class extends Controller {
     this.popupTarget.classList.add('hidden')
   }
 
+  closePopupDelayed(){
+    setTimeout(() => {
+      if (this.popupTarget.contains(document.activeElement)) {
+        return;
+      } else {
+        this.closePopup();
+      };
+    }, "50");
+  }
+
   closeBackground(e) {
     if (e && (this.popupTarget.contains(e.target) || this.toggleTarget.contains(e.target))) {
       return
