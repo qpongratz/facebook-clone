@@ -2,6 +2,7 @@
   border-radius: var(--border-radius);
   padding: .5rem 1rem;
   display: flex;
+  gap: .5rem;
   align-items: center;
   justify-content: center;
   text-decoration: none;
@@ -11,6 +12,10 @@
   transition: background-color 200ms;
   background-color: transparent;
   text-align: center;
+
+  &>*{
+    width: auto;
+  }
 
   &:hover, &:focus, &:active {
     background-color: var(--accent-bg-color);
