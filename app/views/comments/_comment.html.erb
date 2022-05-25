@@ -7,7 +7,9 @@
           <div class="comment_content_user">
             <%= render comment.user %>
           </div>
-          <div class="comment_content_text text"><%= comment.content %></div>
+          <%= turbo_frame_tag nested_dom_id(comment, 'content') do %>
+            <div class="comment_content_text text"><%= comment.content %></div>
+          <% end %>
           <div class="comment_content_reaction_count">
             <%= render 'reactions/reaction_count', reactable: comment %>
           </div>

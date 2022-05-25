@@ -12,9 +12,11 @@
       </div>
     </div>
 
-    <div class="post_content">
-      <p class='text'><%= post.content %></p>
-    </div>
+    <%= turbo_frame_tag nested_dom_id(post, 'content') do %>
+      <div class="post_content">
+        <p class='text'><%= post.content %></p>
+      </div>
+    <% end %>
 
     <div class="post_footer" data-controller='focus hidden'>
 

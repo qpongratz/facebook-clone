@@ -7,7 +7,7 @@
   <ul class='options_menu hidden' data-popup-target='popup' data-action='click@window->popup#closeBackground focusout->popup#closePopupDelayed' >
     <li><%= link_to 'Show', object, data: {turbo_frame: '_top'}, class: 'btn btn_dark'%></li>
     <% if current_user == object.user %>
-      <li><%= link_to "Edit", [:edit, object], class: 'btn btn_dark' %></li>
+      <li><%= link_to "Edit", [:edit, object], class: 'btn btn_dark', data: {turbo_frame: nested_dom_id(object, 'content')} %></li>
       <li><%= button_to "Delete", object, method: :delete, class: 'btn btn_dark' %></li>
     <% end %>
   </ul>
