@@ -13,6 +13,11 @@
     width: max-content;
     z-index: 2;
 
+    &:hover,
+    &:focus-within {
+      display: inline;
+    }
+
     &_overlap {
       top: auto;
       bottom: 80%;
@@ -20,7 +25,8 @@
   }
 
 
-  &:hover &_hidden {
+  &:hover > &_hidden,
+  &:focus-within > &_hidden {
     display: inline;
   }
 }
