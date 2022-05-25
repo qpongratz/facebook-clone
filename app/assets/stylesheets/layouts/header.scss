@@ -1,8 +1,14 @@
 header {
   display: flex;
+  flex-direction: column;
   background-color: var(--primary-bg-color);
   align-items: center;
   justify-content: space-around;
-  padding-block: 2rem;
+  grid-column: 1 / 4;
+
+  @media (min-width:600px) {
+    padding-block: 2rem;
+    flex-direction: row;
+  }
 
 }
