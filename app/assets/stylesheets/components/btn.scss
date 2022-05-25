@@ -10,7 +10,7 @@
   border-style: none;
   color: var(--secondary-text-color);
   transition: background-color 200ms;
-  background-color: transparent;
+  background-color: var(--primary-bg-color);
   text-align: center;
 
   &>*{
@@ -34,5 +34,13 @@
     padding: .5rem;
     width: 2rem;
     height: 2rem;
+  }
+
+  &_positive {
+    color: green;
+  }
+
+  &_negative {
+    color: red;
   }
 }
