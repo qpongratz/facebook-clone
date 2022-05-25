@@ -4,7 +4,8 @@
     "datetime",
     "omniauth",
     "reactable",
-    "unliked"
+    "unliked",
+    "visuallyhidden"
   ],
   "cSpell.words": [
     "pagy"
