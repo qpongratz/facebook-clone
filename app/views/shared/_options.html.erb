@@ -2,7 +2,7 @@
   <button class="options_button btn btn_dark btn_circle"
        data-popup-target='toggle'
        data-action='click->popup#togglePopup'>
-    ...
+    <i class="fa-solid fa-ellipsis"></i>
   </button>
   <ul class='options_menu hidden' data-popup-target='popup' data-action='click@window->popup#closeBackground focusout->popup#closePopupDelayed' >
     <li><%= link_to 'Show', object, data: {turbo_frame: '_top'}, class: 'btn btn_dark'%></li>
