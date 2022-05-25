@@ -1,24 +1,28 @@
 <%= turbo_frame_tag comment do %>
   <div class='comment' id="<%= dom_id comment %>">
+    <i class="fa-solid fa-circle-user fa-2xl"></i>
     <div class="comment_wrapper">
-      <div class='comment_content'>
-        <div class="comment_content_user">
-          <%= render comment.user %>
+      <div class="comment_top">
+        <div class='comment_content'>
+          <div class="comment_content_user">
+            <%= render comment.user %>
+          </div>
+          <div class="comment_content_text text"><%= comment.content %></div>
+          <div class="comment_content_reaction_count">
+            <%= render 'reactions/reaction_count', reactable: comment %>
+          </div>
         </div>
-        <div class="comment_content_text text"><%= comment.content %></div>
-        <div class="comment_content_reaction_count">
-          <%= render 'reactions/reaction_count', reactable: comment %>
+        <div class="comment_options">
+          <%= render 'shared/options', object: comment %>
         </div>
       </div>
-      <div class="comment_options">
-        <%= render 'shared/options', object: comment %>
+      <div class="comment_bottom">
+        <ul class="comment_reactions">
+          <li><%= render 'reactions/link', reactable: comment %></li>
+          <li><%= render 'shared/timestamp', object: comment %></li>
+        </ul>
       </div>
     </div>
-
-    <ul class="comment_reactions">
-      <li><%= render 'reactions/link', reactable: comment %></li>
-      <li><%= render 'shared/timestamp', object: comment %></li>
-    </ul>
   </div>
 <% end %>
 

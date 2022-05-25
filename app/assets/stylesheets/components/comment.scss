@@ -1,11 +1,18 @@
 .comment {
   list-style-type: none;
   margin-block: .5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
 
-  &_wrapper{
+  &_top {
     display: flex;
     align-items: center;
     gap: .5rem;
+  }
+
+  &_bottom {
+    font-size: .9rem;
   }
 
   &_content {
