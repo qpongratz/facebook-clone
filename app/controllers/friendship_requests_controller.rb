@@ -15,7 +15,7 @@ class FriendshipRequestsController < ApplicationController
     if @friendship_request.save
       respond_to do |format|
         format.html { redirect_back_or_to root_path, notice: 'Friend request sent' }
-        format.turbo_stream { render 'shared/friend_button_update' }
+        format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Friend request sent' }
       end
     else
       redirect_back_or_to root_path, alert: 'Something went wrong'
@@ -30,7 +30,7 @@ class FriendshipRequestsController < ApplicationController
       @friendship_request.destroy
       respond_to do |format|
         format.html { redirect_back_or_to root_path, notice: 'Friendship accepted' }
-        format.turbo_stream { render 'shared/friend_button_update' }
+        format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Friendship accepted' }
       end
     else
       redirect_back_or_to root_path alert: 'Uh-oh, something went wrong'
@@ -40,8 +40,8 @@ class FriendshipRequestsController < ApplicationController
   def destroy
     @friendship_request.destroy
     respond_to do |format|
-      format.html { redirect_back_or_to root_path, notice: 'Request deleted' }
-      format.turbo_stream { render 'shared/friend_button_update' }
+      format.html { redirect_back_or_to root_path, notice: 'Friend request deleted' }
+      format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Friend request deleted'}
     end
   end
 

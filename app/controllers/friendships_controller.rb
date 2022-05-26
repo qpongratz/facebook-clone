@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     respond_to do |format|
       format.html { redirect_back_or_to root_path, notice: 'Successfully unfriended' }
-      format.turbo_stream { render 'shared/friend_button_update' }
+      format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Successfully unfriended' }
     end
   end
 

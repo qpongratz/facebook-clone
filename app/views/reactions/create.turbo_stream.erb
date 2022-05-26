@@ -10,3 +10,4 @@
 <%= turbo_stream.update nested_dom_id(@reactable, 'reaction_count') do %>
   <%= render 'reactions/reaction_count', reactable: @reactable %>
 <% end %>
+<%= render_turbo_stream_flash_messages %>
