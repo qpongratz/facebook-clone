@@ -1,11 +1,11 @@
 <%= turbo_frame_tag nested_dom_id(reactable, 'reaction_button') do %>
   <% if reaction = reactable.reactions.select { |r| r.user_id == current_user.id }.first %>
     <%= button_to reaction, method: :delete, class: 'btn' do %>
-      <i class="fa-solid fa-thumbs-up"></i> Like
+      <i class="fa-solid fa-thumbs-up"> </i> Like
     <% end %>
   <% else %>
     <%= button_to [reactable, Reaction.new], class: 'btn' do %>
-      <i class="fa-regular fa-thumbs-up"></i> Like
+      <i class="fa-regular fa-thumbs-up"> </i> Like
     <% end %>
   <% end %>
 <% end %>
