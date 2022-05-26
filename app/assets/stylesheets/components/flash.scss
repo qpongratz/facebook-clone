@@ -1,0 +1,30 @@
+.flash {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  opacity: 0%;
+  transform: translate(-50%, -50%);
+  background-color: var(--accent-bg-color-dark);
+  animation-duration: 5s;
+  animation-name: slide-in-fade-out;
+}
+
+@keyframes slide-in-fade-out {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -250%);
+  }
+
+  10% {
+    opacity: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  90% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
