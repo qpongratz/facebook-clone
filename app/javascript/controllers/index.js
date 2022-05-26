@@ -16,5 +16,8 @@ application.register("hidden", HiddenController)
 import PopupController from "./popup_controller.js"
 application.register("popup", PopupController)
 
+import RemovalsController from "./removals_controller.js"
+application.register("removals", RemovalsController)
+
 import ResizeController from "./resize_controller.js"
 application.register("resize", ResizeController)
