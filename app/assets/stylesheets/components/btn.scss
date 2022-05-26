@@ -36,11 +36,17 @@
     height: 2rem;
   }
 
-  &_positive {
+  & .fa-check {
     color: green;
   }
 
-  &_negative {
+  & .fa-xmark,
+  & .fa-user-xmark {
     color: red;
+  }
+
+  &[aria-label=submit]
+  & .fa-user-plus {
+    color: var(--secondary-bg-color)
   }
 }
