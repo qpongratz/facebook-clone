@@ -45,8 +45,8 @@
     color: red;
   }
 
-  &[aria-label=submit]
+  &[aria-label=submit],
   & .fa-user-plus {
-    color: var(--secondary-bg-color)
+    color: var(--secondary-bg-color);
   }
 }
