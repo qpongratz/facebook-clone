@@ -1,8 +1,10 @@
 <h1>Reactions to <%= link_to @reactable.class.to_s.downcase, @reactable %></h1>
-<%= turbo_frame_tag nested_dom_id(@reactable, 'reactions') do %>
-  <ul class='reactions'>
-    <%= render @reactions %>
-  </ul>
-<% end %>
+<div class="card">
+  <%= turbo_frame_tag nested_dom_id(@reactable, 'reactions') do %>
+    <ul class='reactions'>
+      <%= render @reactions %>
+    </ul>
+  <% end %>
+</div>
 <%= link_to 'Back', @reactable %>
 
