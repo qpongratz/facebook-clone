@@ -9,35 +9,39 @@ class PostsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit posts_url
-    assert_selector 'h1', text: 'Posts'
+    assert_content @post.content
   end
 
   test 'should create post when signed in' do
     visit posts_url
-    click_on 'New post'
-
-    fill_in 'Content', with: 'Hello'
-    click_on 'Create Post'
+    within '#new_post' do
+      fill_in 'Content', with: 'Hello'
+      find('button[aria-label=submit]').click
+    end
 
     assert_text 'Hello'
-    assert_selector 'h1', text: 'Posts'
   end
 
   test 'should update Post' do
     visit posts_url
-    click_on 'Edit this post', match: :first
+    within "div#post_#{@post.id}" do
+      find('button[aria-label=options]').click
+      click_on 'Edit', match: :first
 
-    fill_in 'Content', with: 'Goodbye'
-    click_on 'Update Post'
+      within "#post_#{@post.id}_content" do
+        fill_in 'Content', with: 'Goodbye'
+        find('button[aria-label=submit]').click
+      end
 
-    assert_text 'Goodbye'
-    assert_selector 'h1', text: 'Posts'
+      assert_text 'Goodbye'
+    end
   end
 
   test 'should destroy Post' do
     visit posts_path
     within "div#post_#{@post.id}" do
-      click_on 'Destroy this post', match: :first
+      find('button[aria-label=options]').click
+      click_on 'Delete', match: :first
     end
 
     assert_no_selector "div#post_#{@post.id}"
