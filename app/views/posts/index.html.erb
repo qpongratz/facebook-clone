@@ -1,6 +1,6 @@
 <h1>Posts</h1>
 
-<div class="post">
+<div class="card">
   <%= turbo_frame_tag 'new_post', src: new_post_path do %>
     <%= render 'posts/form_loading'%>
   <% end %>

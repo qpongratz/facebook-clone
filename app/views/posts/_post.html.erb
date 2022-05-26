@@ -1,49 +1,45 @@
 <%= turbo_frame_tag post do %>
-  <div class='post' id=<%= "post_#{post.id}" %> >
-
-    <div class="post_header">
-      <div class="post_info">
-        <%= render post.user %>
-        <%= render 'shared/timestamp', object: post %>
-      </div>
-
-      <div class='post_options'>
-        <%= render 'shared/options', object: post %>
-      </div>
-    </div>
-
-    <%= turbo_frame_tag nested_dom_id(post, 'content') do %>
-      <div class="post_content">
-        <p class='text'><%= post.content %></p>
-      </div>
-    <% end %>
-
-    <div class="post_footer" data-controller='focus hidden'>
-
-      <div class="post_stats">
-        <div class="post_stats_reactions">
-          <%= render 'reactions/reaction_count', reactable: post%>
+  <div class="card">
+    <div class='post' id=<%= "post_#{post.id}" %> >
+      <div class="post_header">
+        <div class="post_info">
+          <%= render post.user %>
+          <%= render 'shared/timestamp', object: post %>
         </div>
-        <div class="post_stats_comments">
-          <%= turbo_frame_tag nested_dom_id(post, 'comment_count') do %>
-            <%= render 'comments/count', object: post %>
+        <div class='post_options'>
+          <%= render 'shared/options', object: post %>
+        </div>
+      </div>
+      <%= turbo_frame_tag nested_dom_id(post, 'content') do %>
+        <div class="post_content">
+          <p class='text'><%= post.content %></p>
+        </div>
+      <% end %>
+      <div class="post_footer" data-controller='focus hidden'>
+        <div class="post_stats">
+          <div class="post_stats_reactions">
+            <%= render 'reactions/reaction_count', reactable: post%>
+          </div>
+          <div class="post_stats_comments">
+            <%= turbo_frame_tag nested_dom_id(post, 'comment_count') do %>
+              <%= render 'comments/count', object: post %>
+            <% end %>
+          </div>
+        </div>
+        <div class="post_interaction">
+          <%= render 'reactions/button', reactable: post %>
+          <%= link_to 'javascript:;',
+            data: { action: 'click->focus#focusInput'  },
+            class: 'btn' do %>
+            <i class="fa-regular fa-comment fa-flip-horizontal"></i> Comment
           <% end %>
         </div>
-      </div>
-      <div class="post_interaction">
-        <%= render 'reactions/button', reactable: post %>
-        <%= link_to 'javascript:;',
-          data: { action: 'click->focus#focusInput'  },
-          class: 'btn' do %>
-          <i class="fa-regular fa-comment fa-flip-horizontal"></i> Comment
+        <%= turbo_frame_tag nested_dom_id(post, 'comments'), class: 'hidden', data: { hidden_target: 'display' } %>
+        <%= turbo_frame_tag nested_dom_id(post, 'appended_comments'), data: {hidden_target: 'clear'} %>
+        <%= turbo_frame_tag nested_dom_id(post, 'new_comment'), src: new_post_comment_path(post), loading: :lazy do %>
+          <%= render 'comments/form_loading' %>
         <% end %>
       </div>
-      <%= turbo_frame_tag nested_dom_id(post, 'comments'), class: 'hidden', data: { hidden_target: 'display' } %>
-      <%= turbo_frame_tag nested_dom_id(post, 'appended_comments'), data: {hidden_target: 'clear'} %>
-      <%= turbo_frame_tag nested_dom_id(post, 'new_comment'), src: new_post_comment_path(post), loading: :lazy do %>
-        <%= render 'comments/form_loading' %>
-      <% end %>
     </div>
-
   </div>
 <% end %>
