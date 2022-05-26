@@ -12,9 +12,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% if flash.any? %>
-      <%= render 'layouts/flash' %>
-    <% end %>
+    <%= render 'layouts/flash' %>
     <main>
       <%= yield %>
     </main>

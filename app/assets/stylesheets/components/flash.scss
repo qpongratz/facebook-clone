@@ -1,23 +1,25 @@
-.flash {
-  position: absolute;
+.flash{
+  position: fixed;
   left: 50%;
   top: 10%;
-  opacity: 0%;
-  transform: translate(-50%, -50%);
-  background-color: var(--accent-bg-color-dark);
-  animation-duration: 5s;
-  animation-name: slide-in-fade-out;
+  transform: translateX(-50%);
+
+  &_message {
+    background-color: var(--accent-bg-color-dark);
+    animation-duration: 3s;
+    animation-name: slide-in-fade-out;
+  }
 }
 
 @keyframes slide-in-fade-out {
   0% {
     opacity: 0;
-    transform: translate(-50%, -250%);
+    transform: translateY(-250%);
   }
 
   10% {
     opacity: 100%;
-    transform: translate(-50%, -50%);
+    transform: translateY(0%);
   }
 
   90% {
