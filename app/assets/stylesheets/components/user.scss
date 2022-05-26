@@ -1,12 +1,3 @@
-.user {
-  &_links{
-    & *{
-      max-width: max(10rem);
-    }
-
-  }
-}
-
 .new_user {
   display: flex;
   flex-direction: column;
