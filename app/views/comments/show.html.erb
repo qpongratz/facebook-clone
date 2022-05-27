@@ -8,7 +8,7 @@
   <ul>
     <li><%= link_to "Back to parent", @comment.commentable, class: 'link'%></li>
     <% if current_user == @comment.user %>
-      <li><%= link_to "Edit this comment",  edit_comment_path, class: 'link' %> |</li>
+      <li><%= link_to "Edit this comment",  edit_comment_path, class: 'link' %></li>
       <li><%= button_to "Destroy this comment", @comment, method: :delete, class: 'link' %></li>
     <% end %>
   </ul>
