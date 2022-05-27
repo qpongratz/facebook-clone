@@ -11,9 +11,12 @@
     gap: .5rem;
   }
 
+  &_wrapper {
+    min-width: 10%;
+  }
+
   &_content {
-    min-width: 40%;
-    width: fit-content;
+    min-width: 10%;
     overflow-wrap: break-word;
     background-color: var(--accent-bg-color);
     border-radius: var(--border-radius);
@@ -25,11 +28,8 @@
       right: 0;
       bottom: 0;
       transform: translate(25%, 50%);
-      background-color: inherit;
       border-radius: 50%;
       font-size: .8rem;
-      padding: .2rem;
-      width: auto;
     }
   }
 
