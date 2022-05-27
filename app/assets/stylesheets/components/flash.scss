@@ -3,6 +3,7 @@
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
+  z-index: 3;
 
   &_message {
     background-color: var(--accent-bg-color-dark);
