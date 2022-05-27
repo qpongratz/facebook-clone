@@ -4,5 +4,16 @@ body {
   @media (min-width:600px) {
     display: grid;
     grid-template-columns: 1fr minmax(600px, 750px) 1fr;
+    grid-template-rows: 100px 1fr;
+  }
+  &.full {
+    background-image: url(night-sky-full.jpeg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+
+    & * {
+      opacity: 95%;
+    }
   }
 }
