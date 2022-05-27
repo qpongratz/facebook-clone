@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
   def index
@@ -72,6 +73,13 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def authorize_user
+    return if current_user == @post.user
+
+    flash[:error] = 'Not authorized'
+    redirect_back_or_to root_path
   end
 
   def post_params
