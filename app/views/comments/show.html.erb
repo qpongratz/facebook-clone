@@ -1,12 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
-<%= turbo_frame_tag @comment do %>
-  <%= render 'comments/comment', comment: @comment %>
-<% end %>
+<div class="card">
+  <%= turbo_frame_tag @comment do %>
+    <%= render 'comments/comment', comment: @comment %>
+  <% end %>
+</div>
 
 <div>
-  <%= link_to "Edit this comment",  edit_comment_path %> |
-  <%= link_to "Back to parent", @comment.commentable%>
-
-  <%= button_to "Destroy this comment", @comment, method: :delete %>
+  <ul>
+    <li><%= link_to "Back to parent", @comment.commentable, class: 'link'%></li>
+    <% if current_user == @comment.user %>
+      <li><%= link_to "Edit this comment",  edit_comment_path, class: 'link' %> |</li>
+      <li><%= button_to "Destroy this comment", @comment, method: :delete, class: 'link' %></li>
+    <% end %>
+  </ul>
 </div>
