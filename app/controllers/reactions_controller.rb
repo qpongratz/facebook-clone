@@ -3,6 +3,7 @@
 class ReactionsController < ApplicationController
   before_action :set_reactable, except: %i[destroy]
   before_action :set_reaction, only: %i[destroy]
+  before_action :authorize_user, only: %i[destroy]
 
   def index
     @reactions = @reactable.reactions.includes(:user)
@@ -32,6 +33,14 @@ class ReactionsController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    return if current_user == @reaction.user
+
+    flash[:error] = 'Not authorized'
+    redirect_back_or_to root_path
+  end
+
 
   def set_reaction
     @reaction = Reaction.find(params[:id])
