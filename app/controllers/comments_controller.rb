@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :set_parent_id, only: %i[new]
   before_action :set_commentable, except: %i[show edit update destroy]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @comments = @commentable.comments.ordered.includes(:user, :reactions)
@@ -65,6 +66,14 @@ class CommentsController < ApplicationController
   def set_parent_id
     @parent_id = params[:parent_id]
   end
+
+  def authorize_user
+    return if current_user == @comment.user
+
+    flash[:error] = 'Not authorized'
+    redirect_back_or_to root_path
+  end
+
 
   # Only allow a list of trusted parameters through.
   def comment_params
