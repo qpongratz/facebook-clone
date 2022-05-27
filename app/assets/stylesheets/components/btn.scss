@@ -29,6 +29,14 @@
     color: var(--primary-text-color);
   }
 
+  &_darkbg {
+    background-color: var(--accent-bg-color);
+
+    &:hover, &:focus, &:active {
+      background-color: var(--accent-bg-color-dark);
+    }
+  }
+
   &_circle {
     border-radius: 50%;
     padding: .5rem;
