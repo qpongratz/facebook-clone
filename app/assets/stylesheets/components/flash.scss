@@ -6,7 +6,11 @@
   z-index: 3;
 
   &_message {
-    background-color: var(--accent-bg-color-dark);
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    margin: .5rem;
+    background-color: hsl(0, 0%, 11%);
+    color: white;
     animation-duration: 3s;
     animation-name: slide-in-fade-out;
   }
@@ -22,13 +26,13 @@
     transform: translateY(-250%);
   }
 
-  10% {
-    opacity: 100%;
+  15% {
+    opacity: 80%;
     transform: translateY(0%);
   }
 
-  90% {
-    opacity: 100%;
+  75% {
+    opacity: 80%;
   }
 
   100% {
