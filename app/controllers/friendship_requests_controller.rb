@@ -1,5 +1,5 @@
 class FriendshipRequestsController < ApplicationController
-  before_action :set_user, only: %i[index]
+  before_action :set_user, only: %i[index create]
   before_action :set_friendship_request, only: %i[destroy accept]
   before_action :find_turbo_user, only: %i[destroy]
 
@@ -9,13 +9,15 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @friendship_request = current_user.outgoing_requests.build(receiver: @user)
 
     if @friendship_request.save
       respond_to do |format|
         format.html { redirect_back_or_to root_path, notice: 'Friend request sent' }
-        format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Friend request sent' }
+        format.turbo_stream do
+          flash.now[:notice] = 'Friend request sent'
+          render 'shared/friend_button_update'
+        end
       end
     else
       redirect_back_or_to root_path, alert: 'Something went wrong'
@@ -30,7 +32,10 @@ class FriendshipRequestsController < ApplicationController
       @friendship_request.destroy
       respond_to do |format|
         format.html { redirect_back_or_to root_path, notice: 'Friendship accepted' }
-        format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Friendship accepted' }
+        format.turbo_stream do
+          flash.now[:notice] = 'Friendship accepted'
+          render 'shared/friend_button_update'
+        end
       end
     else
       redirect_back_or_to root_path alert: 'Uh-oh, something went wrong'
@@ -41,7 +46,10 @@ class FriendshipRequestsController < ApplicationController
     @friendship_request.destroy
     respond_to do |format|
       format.html { redirect_back_or_to root_path, notice: 'Friend request deleted' }
-      format.turbo_stream { render 'shared/friend_button_update', flash.now[:notice] = 'Friend request deleted'}
+      format.turbo_stream do
+        flash.now[:notice] = 'Friend request deleted'
+        render 'shared/friend_button_update'
+      end
     end
   end
 
