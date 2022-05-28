@@ -1,6 +1,6 @@
 <% flash.each do |flash_type, message| %>
   <div
-    class='flash_message flash_type'
+    class='flash_message <%=flash_type%>'
     data-controller='removals'
     data-action='animationend->removals#remove'
   >
