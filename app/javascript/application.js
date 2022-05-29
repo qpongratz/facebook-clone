@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "@fortawesome/fontawesome-free/js/all"
+import '@lottiefiles/lottie-player';
 
 // Comment in to disable turbo to test functionality of website
 // import { Turbo } from "@hotwired/turbo-rails"

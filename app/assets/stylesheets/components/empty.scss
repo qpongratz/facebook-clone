@@ -1,0 +1,6 @@
+.empty {
+  display: none;
+}
+.empty:only-child {
+  display: inline-block;
+}

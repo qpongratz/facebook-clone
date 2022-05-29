@@ -4,12 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to Fakebook, <%= @user.name %>!</h1>
+    <h1>Welcome to Spacebook, <%= @user.name %>!</h1>
+
+    <%= inline_svg_tag('svg/welcome.svg', size: '30% * 30%') %>
     <p>
-      You have successfully signed up to this website.
+      You have successfully signed up to Spacebook.
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      To login to the site, just follow this link: <%= link_to 'Log in', @url %>.
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

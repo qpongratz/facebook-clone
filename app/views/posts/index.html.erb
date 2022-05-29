@@ -6,10 +6,16 @@
   <% end %>
 </div>
 
+<div class="posts">
+  <%= turbo_frame_tag 'posts' do %>
+    <%= render @posts %>
+    <div class="empty card">
+      <p>Nothing to see yet. Try making a post or adding some friends to see their posts. </p>
+      <%= inline_svg_tag('svg/product_release.svg')%>
+    </div>
+  <% end %>
+</div>
 
-<%= turbo_frame_tag 'posts' do %>
-  <%= render @posts %>
-<% end %>
 
 <%= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream) do %>
   Loading...
