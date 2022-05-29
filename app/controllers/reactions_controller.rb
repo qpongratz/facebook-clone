@@ -15,7 +15,7 @@ class ReactionsController < ApplicationController
     if @reaction.save
       respond_to do |format|
         format.html { redirect_back_or_to root_path, notice: 'You liked it' }
-        format.turbo_stream { flash.now[:notice] = 'Liked!.'}
+        format.turbo_stream { flash.now[:notice] = 'Liked!'}
       end
     else
       redirect_back_or_to root_path, notice: 'Something went wrong'
@@ -28,7 +28,7 @@ class ReactionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_back_or_to root_path, notice: 'Unliked!' }
-      format.turbo_stream { flash.now[:notice] = 'Unliked!.'}
+      format.turbo_stream { flash.now[:notice] = 'Unliked!'}
     end
   end
 
@@ -40,7 +40,6 @@ class ReactionsController < ApplicationController
     flash[:error] = 'Not authorized'
     redirect_back_or_to root_path
   end
-
 
   def set_reaction
     @reaction = Reaction.find(params[:id])
