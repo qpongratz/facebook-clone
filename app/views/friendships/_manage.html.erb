@@ -1,21 +1,21 @@
 <div class="friendship_request">
   <% if (friendship = user.friendships.select { |f| f.friend_id == current_user.id }.first) %>
-    <%= button_to friendship, method: :delete, class: 'btn' do %>
+    <%= button_to friendship, method: :delete, class: 'btn btn_darkbg' do %>
       <i class="fa-solid fa-user-xmark"></i> Unfriend
     <% end %>
   <% elsif request = user.requests.select { |r| r.requester_id == current_user.id }.first %>
-    <%= button_to request, method: :delete, class: 'btn' do %>
+    <%= button_to request, method: :delete, class: 'btn btn_darkbg' do %>
       <i class="fa-solid fa-xmark"></i> Cancel Request
     <% end %>
   <% elsif request = user.requests.select { |r| r.receiver_id == current_user.id }.first %>
-    <%= button_to accept_friendship_request_path(request), class: 'btn' do %>
+    <%= button_to accept_friendship_request_path(request), class: 'btn btn_darkbg' do %>
       <i class="fa-solid fa-check"></i> Accept Request
     <% end %>
-    <%= button_to request, method: :delete, class: 'btn' do %>
+    <%= button_to request, method: :delete, class: 'btn btn_darkbg' do %>
       <i class="fa-solid fa-xmark"></i> Reject Request
     <% end %>
   <% else %>
-    <%= button_to friendship_requests_path, params: {user_id: user.id}, class: 'btn' do %>
+    <%= button_to friendship_requests_path, params: {user_id: user.id}, class: 'btn btn_darkbg' do %>
       <i class="fa-solid fa-user-plus"></i> Send Friend Request
     <% end %>
   <% end %>
