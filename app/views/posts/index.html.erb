@@ -8,11 +8,11 @@
 
 <div class="posts">
   <%= turbo_frame_tag 'posts' do %>
-    <%= render @posts %>
     <div class="empty card">
       <p>Nothing to see yet. Try making a post or adding some friends to see their posts. </p>
       <%= inline_svg_tag('svg/product_release.svg')%>
     </div>
+    <%= render @posts %>
   <% end %>
 </div>
 
