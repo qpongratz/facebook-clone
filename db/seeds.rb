@@ -38,10 +38,12 @@ end
 
 puts 'Seeding friendships...'
 
+FriendshipRequest.delete_all
+
 all_users.each do |user|
   next if user.id == 1
 
-  user.outgoing_requests.create(receiver_id: test.id)
+  test.incoming_requests.create(requester_id: user.id)
 end
 
 puts 'Seeding Complete'
