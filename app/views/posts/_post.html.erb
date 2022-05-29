@@ -3,7 +3,7 @@
     <div class='post' id=<%= "post_#{post.id}" %> >
       <div class="post_header">
         <div class="post_info">
-          <%= render post.user %>
+          <%= render 'users/popup_link', user: post.user %>
           <%= render 'shared/timestamp', object: post %>
         </div>
         <div class='post_options'>

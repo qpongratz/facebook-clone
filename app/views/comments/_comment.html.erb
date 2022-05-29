@@ -5,7 +5,7 @@
       <div class="comment_top">
         <div class='comment_content'>
           <div class="comment_content_user">
-            <%= render comment.user %>
+            <%= render 'users/popup_link', user: comment.user %>
           </div>
           <%= turbo_frame_tag nested_dom_id(comment, 'content') do %>
             <div class="comment_content_text text"><%= comment.content %></div>

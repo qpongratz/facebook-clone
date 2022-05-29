@@ -1,0 +1,12 @@
+<div class="display_on_hover">
+  <span class='display_on_hover_show link'>
+    <strong>
+      <%= link_to "#{user.name}", user, class: 'link', data: {turbo_frame: '_top'} %>
+    </strong>
+  </span>
+  <div class="display_on_hover_hidden display_on_hover_hidden_overlap user_card">
+    <%= turbo_frame_tag nested_dom_id(user, 'card'), src: card_user_path(user), loading: :lazy do %>
+      Loading...
+    <% end %>
+  </div>
+</div>
