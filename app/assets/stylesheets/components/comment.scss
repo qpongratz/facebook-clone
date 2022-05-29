@@ -5,6 +5,10 @@
   align-items: flex-start;
   gap: var(--average-space);
 
+  &:hover .comment_options {
+    opacity: 100%;
+  }
+
   &_top {
     display: flex;
     align-items: center;
@@ -33,6 +37,10 @@
     }
   }
 
+  &_options {
+    opacity: 0%;
+  }
+
   &_reactions {
     display: flex;
     gap: var(--small-space);
@@ -44,4 +52,5 @@
   &_reacted {
     color: var(--secondary-bg-color);
   }
+
 }
