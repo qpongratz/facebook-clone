@@ -7,11 +7,12 @@
     position: absolute;
     top: 100%;
     left: 0;
-    padding: 1rem;
-    background-color: hsla(0, 0%, 20%, 0.848);
-    color: white;
+    padding: var(--wider-spacing);
+    background-color: var(--dark-bg-color);
+    color: var(--dark-bg-text-color);
     width: max-content;
     z-index: 2;
+    border-radius: var(--border-radius);
 
     &:hover,
     &:focus-within {

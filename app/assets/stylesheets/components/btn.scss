@@ -1,8 +1,8 @@
 .btn {
   border-radius: var(--border-radius);
-  padding: .5rem 1rem;
+  padding: var(--wider-spacing);
   display: flex;
-  gap: .5rem;
+  gap: var(--small-space);
   align-items: center;
   justify-content: center;
   text-decoration: none;
@@ -39,7 +39,7 @@
 
   &_circle {
     border-radius: 50%;
-    padding: .5rem;
+    padding: var(--small-space);
     width: 2rem;
     height: 2rem;
   }

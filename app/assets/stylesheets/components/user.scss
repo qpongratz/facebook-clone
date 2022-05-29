@@ -2,17 +2,16 @@
 .edit_user {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
+  gap: var(--average-space);
+  padding: var(--average-space);
 
   & input {
     border-radius: var(--border-radius);
     border: none;
-    border-radius: 1rem;
     background-color: var(--accent-bg-color);
     resize: none;
     height: 2rem;
-    padding: .5rem;
+    padding: var(--wider-spacing);
     width: auto;
     flex-basis: fit-content;
 

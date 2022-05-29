@@ -6,11 +6,11 @@
   z-index: 3;
 
   &_message {
-    padding: .5rem 1rem;
-    border-radius: 1rem;
-    margin: .5rem;
-    background-color: hsl(0, 0%, 11%);
-    color: white;
+    padding: var(--wider-spacing);
+    border-radius: var(--border-radius-severe);
+    margin: var(--small-space);
+    background-color: var(--dark-bg-color);
+    color: var(--dark-bg-text-color);
     animation-duration: 3s;
     animation-name: slide-in-fade-out;
   }
@@ -23,12 +23,12 @@
   }
 
   15% {
-    opacity: 80%;
+    opacity: 100%;
     transform: translateY(0%);
   }
 
   75% {
-    opacity: 80%;
+    opacity: 100%;
   }
 
   100% {

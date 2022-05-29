@@ -6,12 +6,12 @@
   }
 
   &_interaction {
-    padding: .3rem 0;
+    padding: var(--xsmall-space) 0;
     display: flex;
     border-top: solid 1px var(--accent-border-color);
     border-bottom: solid 1px var(--accent-border-color);
-    margin-block: .5rem;
-    gap: .5rem;
+    margin-block: var(--small-space);
+    gap: var(--small-space);
 
     & * {
       width: 100%;

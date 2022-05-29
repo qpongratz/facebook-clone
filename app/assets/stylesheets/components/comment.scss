@@ -1,14 +1,14 @@
 .comment {
   list-style-type: none;
-  margin-block: .5rem;
+  margin-block: var(--small-space);
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--average-space);
 
   &_top {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: var(--small-space);
   }
 
   &_wrapper {
@@ -20,7 +20,7 @@
     overflow-wrap: break-word;
     background-color: var(--accent-bg-color);
     border-radius: var(--border-radius);
-    padding: .5rem;
+    padding: var(--small-space);
     position: relative;
 
     &_reaction_count {
@@ -29,13 +29,13 @@
       bottom: 0;
       transform: translate(25%, 50%);
       border-radius: 50%;
-      font-size: .8rem;
+      font-size: var(--small-font-size);
     }
   }
 
   &_reactions {
     display: flex;
-    gap: .5rem;
+    gap: var(--small-space);
     list-style: none;
     margin: 0;
     padding: 0;

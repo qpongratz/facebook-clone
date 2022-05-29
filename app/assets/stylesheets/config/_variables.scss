@@ -7,13 +7,25 @@
   --secondary-bg-color: hsl(254, 46%, 44%);
   --accent-bg-color: hsl(216, 20%, 95%);
   --accent-bg-color-dark: hsl(216, 20%, 90%);
+  --dark-bg-color: hsla(0, 0%, 11%, .95);
 
   --accent-border-color: hsl(216, 20%, 80%);
 
   --primary-text-color: hsl(0, 0%, 12%);
   --secondary-text-color: hsl(0, 0%, 25%);
+  --dark-bg-text-color: hsl(0, 0%, 100%);
 
 
   // Sizes!
   --border-radius: .5rem;
+  --border-radius-severe: 1rem;
+
+  --xsmall-space: .3rem;
+  --small-space: .5rem;
+  --average-space: 1rem;
+
+  --wider-spacing: var(--small-space) var(--average-space);
+
+  // Font Sizes!
+  --small-font-size: .8rem;
 }

@@ -9,7 +9,7 @@
     background-color: var(--primary-bg-color);
     border-radius: var(--border-radius);
     z-index: 1;
-    padding: .5rem;
+    padding: var(--small-space);
     list-style: none;
 
     & > li  * {
@@ -20,7 +20,7 @@
       content: "";
       display: block;
       border-bottom: 1px solid #CCC;
-      margin-block: .5rem;
+      margin-block: var(--small-space);
     }
 
     & >*:last-child::after {
