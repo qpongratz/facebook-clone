@@ -37,8 +37,7 @@ class ReactionsController < ApplicationController
   def authorize_user
     return if current_user == @reaction.user
 
-    flash[:error] = 'Not authorized'
-    redirect_back_or_to root_path
+    unauthorized_redirect
   end
 
   def set_reaction

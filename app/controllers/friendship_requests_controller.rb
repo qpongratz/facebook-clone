@@ -71,6 +71,6 @@ class FriendshipRequestsController < ApplicationController
   def authorize_user
     return if @user == current_user
 
-    redirect_back_or_to root_path, error: 'Not authorized'
+    unauthorized_redirect
   end
 end

@@ -78,8 +78,7 @@ class PostsController < ApplicationController
   def authorize_user
     return if current_user == @post.user
 
-    flash[:error] = 'Not authorized'
-    redirect_back_or_to root_path
+    unauthorized_redirect
   end
 
   def post_params
