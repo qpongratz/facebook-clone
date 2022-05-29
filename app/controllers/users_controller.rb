@@ -11,7 +11,10 @@ class UsersController < ApplicationController
   end
 
   def card
-    render layout: false
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render layout: false }
+    end
   end
 
   private
