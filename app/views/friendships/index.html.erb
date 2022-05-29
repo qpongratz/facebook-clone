@@ -3,7 +3,7 @@
   <div class="card">
     <ul>
       <li>
-        <%= render partial: 'users/popup_link', collection: @friends, as: :user, spacer_template: 'shared/spacer/list' %>
+        <%= render(partial: 'users/popup_link', collection: @friends, as: :user, spacer_template: 'shared/spacer/list') || 'No friends yet.' %>
       </li>
     </ul>
   </div>
