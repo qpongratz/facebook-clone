@@ -101,3 +101,4 @@ gem "figaro"
 
 gem "letter_opener", group: :development
 gem "jsbundling-rails", "~> 1.0"
+gem 'inline_svg'
