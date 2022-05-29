@@ -1,13 +1,17 @@
-<h1>Incoming Requests</h1>
-<ul>
-  <% @incoming_requests.each do |request| %>
-    <li><%= render request.requester %></li>
-  <% end %>
-</ul>
+<% if @incoming_requests.present? %>
+  <h1>Incoming Requests</h1>
+  <ul>
+    <% @incoming_requests.each do |request| %>
+      <li><%= render request.requester %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<h1>Outgoing Requests</h1>
-<ul>
-  <% @outgoing_requests.each do |request| %>
-    <li><%= render request.receiver %></li>
-  <% end %>
-</ul>
+<% if @outgoing_requests.present? %>
+  <h1>Outgoing Requests</h1>
+  <ul>
+    <% @outgoing_requests.each do |request| %>
+      <li><%= render request.receiver %></li>
+    <% end %>
+  </ul>
+<% end %>
