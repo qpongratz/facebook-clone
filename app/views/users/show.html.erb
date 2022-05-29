@@ -5,6 +5,15 @@
   <%= @user.name %>'s Profile
 </h1>
 
+<% unless current_user == @user %>
+  <h2>Manage Friendship</h2>
+  <div class="card">
+    <%= turbo_frame_tag nested_dom_id(@user, 'manage_friendship') do %>
+      <%= render 'friendships/manage', user: @user %>
+    <% end %>
+  </div>
+<% end %>
+
 <h2><%= "#{@user.name}'s Posts"  %></h2>
 
 <%= render(@posts) || "#{@user.name} has no posts"%>
