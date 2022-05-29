@@ -34,8 +34,11 @@
             <i class="fa-regular fa-comment fa-flip-horizontal"></i> Comment
           <% end %>
         </div>
-        <%= turbo_frame_tag nested_dom_id(post, 'comments'), class: 'hidden', data: { hidden_target: 'display' } %>
-        <%= turbo_frame_tag nested_dom_id(post, 'appended_comments'), data: {hidden_target: 'clear'} %>
+        <%= turbo_frame_tag nested_dom_id(post, 'comments'),
+              src: [post, :comments],
+              loading: :lazy, class: 'hidden',
+              data: { hidden_target: 'display' } %>
+        <%= turbo_frame_tag nested_dom_id(post, 'appended_comments'), data: { hidden_target: 'hide clear' } %>
         <%= turbo_frame_tag nested_dom_id(post, 'new_comment'), src: new_post_comment_path(post), loading: :lazy do %>
           <%= render 'comments/form_loading' %>
         <% end %>

@@ -1,3 +1,6 @@
 <% if object.comments.size > 0 %>
-  <%= link_to "#{object.comments.size} comments", [object, :comments], data: { action: 'hidden#toggle', turbo_frame: nested_dom_id(object, 'comments') }, class: 'link' %>
+  <%= link_to "#{object.comments.size} comments",
+        'javascript:;',
+        data: { action: 'hidden#toggle' },
+        class: 'link' %>
 <% end %>
