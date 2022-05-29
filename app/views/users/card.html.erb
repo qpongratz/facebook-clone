@@ -1,6 +1,6 @@
 <%= turbo_frame_tag nested_dom_id(@user, 'card') do %>
   <%= link_to "#{@user.name}", @user, class: 'link', data: {turbo_frame: '_top'} %> <br>
-  Their school or somehting.
+  Personal information placeholder.
   <% unless @user.id == current_user.id%>
     <%= turbo_frame_tag nested_dom_id(@user, 'manage_friendship') do %>
       <%= render 'friendships/manage', user: @user %>
