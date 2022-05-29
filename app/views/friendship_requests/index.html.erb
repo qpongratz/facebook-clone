@@ -3,7 +3,7 @@
   <div class="card">
     <ul>
       <% @incoming_requests.each do |request| %>
-        <li><%= render request.requester %></li>
+        <li><%= render partial: 'users/popup_link', user: request.requester %></li>
       <% end %>
     </ul>
   </div>
@@ -14,7 +14,7 @@
   <div class="card">
     <ul>
       <% @outgoing_requests.each do |request| %>
-        <li><%= render request.receiver %></li>
+        <li><%= render 'users/popup_link', user: request.receiver %></li>
       <% end %>
     </ul>
   </div>
