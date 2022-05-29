@@ -8,7 +8,7 @@
     <% if incoming_requests > 0 %>
       <%= link_to "#{pluralize(incoming_requests, 'pending request')}", user_friendship_requests_path(current_user), class: 'btn btn_dark' %>
     <% else %>
-      <%= link_to 'Manage friends', root_path, class: 'btn btn_dark'%>
+      <%= link_to 'Manage friends', user_friendship_requests_path(current_user), class: 'btn btn_dark'%>
     <% end %>
 
     <%= button_to 'Sign out', destroy_user_session_path,  method: :delete, form: { data: { turbo: false } }, class: 'btn btn_dark' %>
