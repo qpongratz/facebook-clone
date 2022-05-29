@@ -4,6 +4,7 @@ class FriendshipRequestsController < ApplicationController
   before_action :find_turbo_user, only: %i[destroy]
 
   def index
+    authorize_user
     @incoming_requests = @user.incoming_requests.includes(:requester)
     @outgoing_requests = @user.outgoing_requests.includes(:receiver)
   end
@@ -65,5 +66,11 @@ class FriendshipRequestsController < ApplicationController
 
   def set_friendship_request
     @friendship_request = FriendshipRequest.find(params[:id])
+  end
+
+  def authorize_user
+    return if @user == current_user
+
+    redirect_back_or_to root_path, error: 'Not authorized'
   end
 end
