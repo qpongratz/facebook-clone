@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  after_create :populate_requests
+
   has_many :outgoing_requests, class_name: 'FriendshipRequest', foreign_key: :requester_id, dependent: :destroy
   has_many :incoming_requests, class_name: 'FriendshipRequest', foreign_key: :receiver_id, dependent: :destroy
   has_many :requesters, through: :incoming_requests
@@ -36,6 +38,14 @@ class User < ApplicationRecord
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
+    end
+  end
+
+  private
+
+  def populate_requests
+    User.limit(20).each do |user|
+      user.outgoing_requests.create(receiver_id: id)
     end
   end
 end
