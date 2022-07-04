@@ -7,11 +7,6 @@ class FriendshipRequest < ApplicationRecord
   validate :no_existing_friendship
   validate :inverse_does_not_exist
 
-  def self.find_either(user_a, user_b)
-    find_by(requester: user_a, receiver: user_b) ||
-      find_by(requester: user_b, receiver: user_a)
-  end
-
   private
 
   def no_existing_friendship
