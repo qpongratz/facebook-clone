@@ -8,5 +8,10 @@ class UserTest < ActiveSupport::TestCase
     @joe = users(:joe)
   end
 
-
+  test '#all_except' do
+    not_mary = User.all_except(@mary)
+    assert_includes not_mary, @friendless
+    assert_includes not_mary, @joe
+    refute_includes not_mary, @mary
+  end
 end
