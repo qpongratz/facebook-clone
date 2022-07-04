@@ -14,4 +14,8 @@ class UserTest < ActiveSupport::TestCase
     assert_includes not_mary, @joe
     refute_includes not_mary, @mary
   end
+
+  test 'name' do
+    assert_equal @mary.name, "#{@mary.first_name} #{@mary.last_name}"
+  end
 end
