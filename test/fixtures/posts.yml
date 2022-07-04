@@ -17,3 +17,11 @@ newer:
   content: New
   created_at: <%= Date.current + 1.week %>
   user: mary
+
+joe_post:
+  content: Joe
+  user: joe
+
+friendless_post:
+  content: Friendless
+  user: friendless
