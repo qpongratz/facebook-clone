@@ -4,5 +4,5 @@ class Reaction < ApplicationRecord
 
   validates :user_id, uniqueness: {
     scope: %i[reactable_type reactable_id],
-    message: 'Only one like per person per thing'}
+    message: 'Only one like per person per thing' }
 end
